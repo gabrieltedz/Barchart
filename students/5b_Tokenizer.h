@@ -1,3 +1,7 @@
+/**
+ * This file is from previous project "cowsay"
+*/
+
 #ifndef _TOKENIZER_H
 #define _TOKENIZER_H
 

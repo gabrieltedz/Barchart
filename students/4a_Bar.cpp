@@ -5,7 +5,7 @@ void Bar::read_line(){
     Tokenizer tk;
     string input = "1500,Beijing,China,672,East Asia";
     vector<string> list;
-    // getline(cin, input);
+    getline(cin, input);
     tk.tokens(input, ",", false);
 
     list = tk.get_tokens_list();

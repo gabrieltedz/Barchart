@@ -1,7 +1,7 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 #include <string>
-#include "3Barchart.h"
+#include "3b_Barchart.h"
 
 class Database 
 {

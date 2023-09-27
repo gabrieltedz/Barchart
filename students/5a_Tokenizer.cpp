@@ -1,3 +1,7 @@
+/**
+ * This file is from previous project "cowsay"
+*/
+
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>

@@ -17,7 +17,7 @@ struct BarItem {
 class Bar
 {
 private:
-BarItem items;
+    BarItem items;
 
 public:
 
