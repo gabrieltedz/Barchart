@@ -1,5 +1,6 @@
 #include <cstdlib> // EXIT_SUCCESS
 #include <vector>
+#include <fstream>
 #include "1b_BCR.h"
 using namespace std;
 
@@ -10,14 +11,11 @@ using namespace std;
 */
 int main(int argc, char **argv) {
   BCR bcr;
-  Bar bar;
+  fstream InputFile(argv[2]);
 
   bcr.start(argc, argv);
-  bar.read_line();
-  cout << bcr.n_bars << endl;
-  cout << bcr.fps << endl;
-  // Read file
-  //bcr.bcr_read();
+
+  bcr.bcr_read_file(bcr.n_bars, bcr.fps);
 
   
 

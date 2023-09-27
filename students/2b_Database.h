@@ -2,6 +2,7 @@
 #define _2B_DATABASE_H
 #include <fstream>
 #include "3b_Barchart.h"
+using namespace std;
 
 class Database 
 {
@@ -10,11 +11,11 @@ private:
 
 public:
     // n_category (increases if a new category is found)
-    std::string main_title;
-    std::string source;
-    std::string label;
+    string main_title;
+    string source;
+    string label;
 
-    //void data_read();
+    void data_read(int n_bars, int fps);
 
 };
 

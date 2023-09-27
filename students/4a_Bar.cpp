@@ -3,7 +3,8 @@ using namespace std;
 
 void Bar::read_line(){
     Tokenizer tk;
-    string input = "1500,Beijing,China,672,East Asia";
+    string input;
+    getline(cin, input);
 
     tk.tokens(input, ",", false);
 

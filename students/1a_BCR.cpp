@@ -58,6 +58,6 @@ void BCR::start(int argc, char **argv){
     }
 }
 
-void BCR::bcr_read_file(){
-    //database.data_read();
+void BCR::bcr_read_file(int n_bars, int fps){
+    database.data_read(n_bars, fps);
 }
