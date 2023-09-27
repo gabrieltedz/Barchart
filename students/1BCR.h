@@ -14,8 +14,9 @@ public:
 
     void start(int argc, char **argv); // initializes variables and reads CLI ONLY (-f and -b options) (does not read file yet)
 
-    void bcr_read(); // Reads file (stores all data in database)
-
+    // Reads file (stores all data in database) (these read functions calls the read function from their lower classes)
+    // EX: bcr_read calls data_read. The former calls b_cart.read() and so on and so forth...
+    void bcr_read(); 
     
 private:
     
