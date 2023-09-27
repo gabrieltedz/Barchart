@@ -2,11 +2,11 @@
 #include <vector>
 #include "1BCR.h"
 
-// OBJETIVO PRINCIPAL NO MOMENTO:
-// Conseguir fazer leitura de dados (não tentar fazer output sem antes
-// settar os dados anteriormente)
-// Start on 4Bar.h!!!!!!!!!
-
+/* OBJETIVO PRINCIPAL NO MOMENTO:
+* Conseguir fazer leitura de dados (não tentar fazer output sem antes
+* settar os dados anteriormente)
+* Comece no 4Bar.h!!!!!!!!!
+*/
 int main(int argc, char **argv) {
   BCR bcr;
   Bar bar;
