@@ -1,12 +1,11 @@
 #ifndef BARCHART_H
 #define BARCHART_H
-#include "4Bar.h"
+#include "4b_Bar.h"
 
 class Barchart
 {
 private:
     std::vector<Bar> bars;
-    
 public:
     
     void sort_bars(); //sorts bars from biggest to smallest from top-down
