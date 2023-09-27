@@ -4,15 +4,8 @@ using namespace std;
 void Bar::read_line(){
     Tokenizer tk;
     string input = "1500,Beijing,China,672,East Asia";
-    vector<string> list;
-    getline(cin, input);
+
     tk.tokens(input, ",", false);
-
-    list = tk.get_tokens_list();
-
-    for (int i = 0; i < list.size(); i++){
-        cout << list[i] << ".";
-    } cout << endl;
 
     items.time_stamp = tk.get_token();
     tk.next();

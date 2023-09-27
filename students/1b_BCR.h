@@ -6,7 +6,7 @@ class BCR
 {
 public:
     short n_bars = 5; // Numbers of bars will be displayed (deafult 5)
-    short fps = 12; // Frames per second (default 12)
+    short fps = 24; // Frames per second (default 12)
 
 public:
 
@@ -16,7 +16,7 @@ public:
 
     // Reads file (stores all data in database) (these read functions calls the read function from their lower classes)
     // EX: bcr_read calls data_read. The former calls b_cart.read() and so on and so forth...
-    void bcr_read(); 
+    void bcr_read_file(); 
     
 private:
     

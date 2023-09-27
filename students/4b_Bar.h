@@ -2,12 +2,14 @@
 #define _4B_BAR_H
 #include <string>
 #include "5b_Tokenizer.h"
-//#include "6b_BarItem.h"
 using namespace std;
 
+/**
+ * All types of information from each line in the datafile.
+*/
 struct BarItem {
     
-    string time_stamp;
+    string time_stamp; 
     string label;
     string dummy;
     int value;
@@ -18,13 +20,13 @@ struct BarItem {
 class Bar
 {
 private:
+    /**
+     * @brief Each Bar object only contains the information from one line, as such,
+     * It only has a BarItem object named items
+    */
     BarItem items;
 
 public:
-
-/**
- * ATTENTION!! Start making program by here!!!!!!!!!!
-*/
 
 /**
  * @brief Reads a SINGLE line 

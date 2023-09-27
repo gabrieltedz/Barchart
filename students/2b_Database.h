@@ -14,7 +14,7 @@ public:
     std::string source;
     std::string label;
 
-    void data_read();
+    //void data_read();
 
 };
 
