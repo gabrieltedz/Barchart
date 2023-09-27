@@ -6,7 +6,7 @@ using namespace std;
 /* OBJETIVO PRINCIPAL NO MOMENTO:
 * Conseguir fazer leitura de dados (não tentar fazer output sem antes
 * settar os dados anteriormente)
-* Comece no 4Bar.h!!!!!!!!!
+* Comece no 4Bar.h!!!!!!!!!!
 */
 int main(int argc, char **argv) {
   BCR bcr;
