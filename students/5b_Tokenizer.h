@@ -2,8 +2,8 @@
  * This file is from previous project "cowsay"
 */
 
-#ifndef _TOKENIZER_H
-#define _TOKENIZER_H
+#ifndef _5B_TOKENIZER_H
+#define _5B_TOKENIZER_H
 
 #include <optional>
 #include <vector>

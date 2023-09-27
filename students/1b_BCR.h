@@ -1,6 +1,6 @@
-#ifndef BCR_H
-#define BCR_H
-#include "2Database.h"
+#ifndef _1B_BCR_H
+#define _1B_BCR_H
+#include "2b_Database.h"
 
 class BCR 
 {

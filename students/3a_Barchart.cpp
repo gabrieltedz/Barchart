@@ -1,5 +1,4 @@
 #include "3b_Barchart.h"
-#include "4b_Bar.h"
 #include <iostream>
 #include <string>
 #include <sstream>

@@ -1,5 +1,5 @@
-#ifndef BARCHART_H
-#define BARCHART_H
+#ifndef _3B_BARCHART_H
+#define _3B_BARCHART_H
 #include "4b_Bar.h"
 using namespace std;
 

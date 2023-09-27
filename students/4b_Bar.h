@@ -1,7 +1,8 @@
-#ifndef BAR_H
-#define BARCHART_H
+#ifndef _4B_BAR_H
+#define _4B_BAR_H
 #include <string>
 #include "5b_Tokenizer.h"
+//#include "6b_BarItem.h"
 using namespace std;
 
 struct BarItem {

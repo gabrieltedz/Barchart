@@ -1,6 +1,6 @@
 #include <cstdlib> // EXIT_SUCCESS
 #include <vector>
-#include "1BCR.h"
+#include "1b_BCR.h"
 
 /* OBJETIVO PRINCIPAL NO MOMENTO:
 * Conseguir fazer leitura de dados (não tentar fazer output sem antes
