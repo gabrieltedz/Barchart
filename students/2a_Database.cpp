@@ -32,3 +32,7 @@ void Database::data_read(int n_bars, int fps){
 		std::this_thread::sleep_for( duration );
     }
 }
+
+int Database::barcharts_size(){
+    return barcharts.size();
+}

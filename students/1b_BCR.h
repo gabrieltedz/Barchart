@@ -23,12 +23,18 @@ public:
      * Basic function to read arguments from command line
     */
     void start(int argc, char **argv); 
+
+    void welcome();
+
+    void show_info();
     
     /**
      * Reads file (stores all data in database) (these read functions calls the read function from their lower classes)
      * EX: bcr_read calls data_read. The former calls b_cart.read() and so on and so forth...
     */
-    void bcr_read_file(int n_bars, int fps); 
+    void bcr_read_file(int n_bars, int fps);
+
+     
     
 private:
     /**

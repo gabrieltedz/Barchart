@@ -20,14 +20,16 @@ std::vector<Barchart> barcharts;
 public:
     // n_category (increases if a new category is found) TODO
     string main_title;
-    string source;
     string label;
+    string source;
 
     /**
      * Function that reads the file until the end, creating barchart instances
      * stored in the vector named barcharts
     */
     void data_read(int n_bars, int fps);
+
+    int barcharts_size();
 
 };
 

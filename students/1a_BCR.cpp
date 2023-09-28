@@ -1,4 +1,5 @@
 #include "1b_BCR.h"
+using namespace std;
 /**
  * Basic function to read arguments from command line
 */
@@ -58,6 +59,39 @@ void BCR::start(int argc, char **argv){
     }
 }
 
+void BCR::welcome(){
+
+    cout << "====================================================" << endl;
+    cout << "  Welcome to the incredible Bar Chart Race! (v1.0)" << endl;
+    cout << "  Copyright (C) 2023, Authors:" << endl;
+    cout << "  Gabriel" << endl;
+    cout << "  Thiago de Medeiros Raquel" << endl;
+    cout << "====================================================" << endl << endl;
+
+    cout << ">>> Preparing to read input file..." << endl << endl;
+
+    cout << ">>> Processing data, please, wait." << endl;
+}
+
+void BCR::show_info(){
+    cout << ">>> Input file successfully read." << endl << endl;
+
+    cout << ">>> We have " << database.barcharts_size() << " charts." << endl;
+    cout << ">>> Animation speed is: " << fps << "." << endl;
+    cout << ">>> Bars being displayed : " << n_bars << "." << endl;
+    cout << ">>> Title: " << database.main_title << endl;
+    cout << ">>> Value is: " << database.label << endl;
+    cout << ">>> " << database.source << endl;
+    // cout << ">>> # of categories found: "  << endl;
+    cout << ">>> Press enter to begin the animation." << endl << endl;
+
+    // cout << categories
+
+}
+
+/**
+ * Function to call data read
+*/
 void BCR::bcr_read_file(int n_bars, int fps){
     database.data_read(n_bars, fps);
 }

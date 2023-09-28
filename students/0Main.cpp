@@ -4,19 +4,31 @@
 #include "1b_BCR.h"
 using namespace std;
 
-/* OBJETIVO PRINCIPAL NO MOMENTO:
-* Conseguir fazer leitura de dados (não tentar fazer output sem antes
-* settar os dados anteriormente)
-* Comece no 4Bar.h!!!!!!!!!!
+/* 
 */
 int main(int argc, char **argv) {
   BCR bcr;
 
+    std::cout << "Press Enter to continue...";
+  std::cin.ignore(); // Wait for Enter key
+
   bcr.start(argc, argv);
 
+  bcr.welcome();
+
+  bcr.show_info();
+
+
+  
   bcr.bcr_read_file(bcr.n_bars, bcr.fps);
+
+
+  
+  bcr.show_info();
+
+  
 
   
 
   return EXIT_SUCCESS;
-}
+} 

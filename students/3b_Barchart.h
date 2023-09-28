@@ -19,7 +19,7 @@ public:
     /**
      * Sorts bars from biggest to smallest from top-down
     */
-    void sort_bars(); 
+    void sort_bars(size_t start, size_t end); 
     
     /**
      * Function that calls the reading to form a single barchart
