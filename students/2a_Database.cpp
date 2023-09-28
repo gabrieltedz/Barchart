@@ -5,6 +5,10 @@
 #include <thread>
 using namespace std;
 
+/**
+ * Function that reads the file until the end, creating barchart instances
+ * stored in the vector named barcharts
+*/
 void Database::data_read(int n_bars, int fps){
     
     getline(cin, main_title);
@@ -25,7 +29,5 @@ void Database::data_read(int n_bars, int fps){
 
 		std::chrono::milliseconds  duration{ 1000 / fps};
 		std::this_thread::sleep_for( duration );
-		//std::cout << "This sentence will be printed on the standard output approximately " << fps << " times per second.\n";
-
     }
 }

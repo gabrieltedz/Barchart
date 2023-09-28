@@ -1,6 +1,9 @@
 #include "4b_Bar.h"
 using namespace std;
 
+/**
+ * Function to read a line ang get it's corresponding bar
+*/
 void Bar::read_line(){
     Tokenizer tk;
     string input;
