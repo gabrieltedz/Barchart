@@ -11,7 +11,6 @@ using namespace std;
 */
 int main(int argc, char **argv) {
   BCR bcr;
-  fstream InputFile(argv[2]);
 
   bcr.start(argc, argv);
 

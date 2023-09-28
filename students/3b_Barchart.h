@@ -3,6 +3,7 @@
 #include "4b_Bar.h"
 using namespace std;
 
+
 /**
  * Class that contains an instance of animation from the Barchart
  * Contains only a vector of bars sorted.
@@ -24,6 +25,9 @@ public:
      * Function that calls the reading to form a single barchart
     */
     void b_chart_read(int times); 
+
+    bool compareByValueDescending(const BarItem& a, const BarItem& b);
+
 };
 
 #endif
