@@ -8,15 +8,16 @@ using namespace std;
 
 void Barchart::sort_bars() {
     int n = bars.size();
+    Bar aux;
     // Bubble sort
     for (int i = 0; i < n - 1; ++i) {
         for (int j = 0; j < n - i - 1; ++j) {
             // Compare the value field of adjacent Bar objects
             if (bars[j].value() < bars[j + 1].value()) {
                 // Swap the Bar objects if they are out of order
-                Bar temp = bars[j];
+                aux = bars[j];
                 bars[j] = bars[j + 1];
-                bars[j + 1] = temp;
+                bars[j + 1] = aux;
             }
         }
     }
