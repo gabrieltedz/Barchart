@@ -21,5 +21,12 @@ void Bar::read_line(){
     tk.next();
     items.category = tk.get_token();
 
+}
+
+void Bar::show_line(){
     cout << items.time_stamp << "." << items.label << "." << items.dummy << "." << items.value << "." << items.category << "." << endl;
+}
+
+int Bar::value(){
+    return items.value;
 }

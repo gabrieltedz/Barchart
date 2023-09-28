@@ -17,7 +17,7 @@ void Database::data_read(int n_bars, int fps){
     string aux;
     int times;
     int i{0};
-    Barchart b_chart;
+    Barchart b_chart;   
 
 
     while(getline(cin >> ws, aux)){
@@ -26,6 +26,7 @@ void Database::data_read(int n_bars, int fps){
         times = stoi(aux);
         b_chart.b_chart_read(times);
         barcharts.push_back(b_chart);
+        b_chart.reset();
 
 		std::chrono::milliseconds  duration{ 1000 / fps};
 		std::this_thread::sleep_for( duration );

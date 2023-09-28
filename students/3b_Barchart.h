@@ -26,7 +26,7 @@ public:
     */
     void b_chart_read(int times); 
 
-    bool compareByValueDescending(const BarItem& a, const BarItem& b);
+    void reset();
 
 };
 

@@ -38,6 +38,10 @@ public:
  * (its called x times on barchart.read())
  */ 
 void read_line(); 
+
+int value();
+
+void show_line();
 };
 
 #endif
