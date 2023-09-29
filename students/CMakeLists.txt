@@ -17,9 +17,11 @@ set( GCC_COMPILE_FLAGS "-Wall" )
 
 # include_directories( "core" "libs" )
 
-add_executable( bcr "main.cpp"
-                    "bcr_am.cpp"
-                    "barchart.cpp"
-                    "libs/coms.cpp" )
+add_executable(bcr  "0Main.cpp"
+                    "1a_BCR.cpp"
+                    "2a_Database.cpp"
+                    "3a_Barchart.cpp"
+                    "4a_Bar.cpp"
+                    "5a_Tokenizer.cpp" )
 
 target_compile_features( bcr PUBLIC cxx_std_17 )

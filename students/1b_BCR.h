@@ -17,7 +17,8 @@ public:
     */
     int fps = 24;
 
-public:
+    std::string name_file;                 /*!< File name. */
+
 
     /**
      * Basic function to read arguments from command line

@@ -49,11 +49,8 @@ void BCR::start(int argc, char **argv){
 
             } 
             
-            /**
-             * It's not an argument, ignore
-            */
             else {
-
+                name_file = argv[i];
             }
         }
     }
@@ -93,5 +90,5 @@ void BCR::show_info(){
  * Function to call data read
 */
 void BCR::bcr_read_file(int n_bars, int fps){
-    database.data_read(n_bars, fps);
+    database.data_read(n_bars, fps, name_file);
 }

@@ -54,5 +54,6 @@
         "numbers": "cpp",
         "semaphore": "cpp",
         "stop_token": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "/home/gabriel-v/barchart/trabalho-03-barchart-race-gabriel_-_thiago/source"
 }

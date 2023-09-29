@@ -9,18 +9,21 @@ using namespace std;
  * Function that reads the file until the end, creating barchart instances
  * stored in the vector named barcharts
 */
-void Database::data_read(int n_bars, int fps){
+void Database::data_read(int n_bars, int fps, std::string name_file){
+
+    archive.open(name_file);
     
-    getline(cin, main_title);
-    getline(cin, source);
-    getline(cin, label);
+    std::getline(archive, main_title);
+    std::cout << name_file;
+    std::getline(archive, source);
+    std::getline(archive, label);
     string aux;
     int times;
     int i{0};
     Barchart b_chart;  
 
 
-    while(getline(cin >> ws, aux)){
+    while(std::getline(archive >> ws, aux)){
         
         cout << endl;
         times = stoi(aux);
@@ -32,6 +35,8 @@ void Database::data_read(int n_bars, int fps){
 		std::chrono::milliseconds  duration{ 1000 / fps};
 		std::this_thread::sleep_for( duration );
     }
+
+    archive.close();
 
     cout << "Categorias presentes no file: ";
     for (int i = 0; i < categories.size(); i++){

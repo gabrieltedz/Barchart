@@ -2,6 +2,7 @@
 #define _2B_DATABASE_H
 #include <fstream>
 #include "3b_Barchart.h"
+#include <fstream>
 using namespace std;
 
 /**
@@ -23,12 +24,14 @@ public:
     string main_title; /**< Title (first line of the input file)*/
     string label; /**< Label (second line of the input file)*/
     string source; /**< Source (third line of the input file)*/
+    
+    std::ifstream archive;
 
     /**
      * Function that reads the file until the end, creating barchart instances
      * stored in the vector named barcharts
     */
-    void data_read(int n_bars, int fps);
+    void data_read(int n_bars, int fps, std::string name_file);
 
     /**
      * Funtion that returns barcharts_size
