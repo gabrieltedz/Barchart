@@ -25,7 +25,7 @@ public:
     /**
      * Function that calls the reading to form a single barchart
     */
-    void b_chart_read(int times); 
+    void b_chart_read(int times, std::istream& stream); 
 
     void reset();
 

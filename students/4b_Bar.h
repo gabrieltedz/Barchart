@@ -37,7 +37,7 @@ public:
  * (this function is called once for each line that contains objects from bars) 
  * (its called x times on barchart.read())
  */ 
-void read_line(); 
+void read_line(std::istream& stream); 
 
 int value();
 

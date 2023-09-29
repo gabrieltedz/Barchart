@@ -4,10 +4,10 @@ using namespace std;
 /**
  * Function to read a line ang get it's corresponding bar
 */
-void Bar::read_line(){
+void Bar::read_line(std::istream& stream){
     Tokenizer tk;
     string input;
-    getline(cin, input);
+    getline(stream, input);
 
     tk.tokens(input, ",", false);
 
