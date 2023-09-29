@@ -42,6 +42,8 @@ void read_line();
 int value();
 
 void show_line();
+
+string categories();
 };
 
 #endif

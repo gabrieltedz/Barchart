@@ -9,14 +9,11 @@ using namespace std;
 int main(int argc, char **argv) {
   BCR bcr;
 
-    std::cout << "Press Enter to continue...";
-  std::cin.ignore(); // Wait for Enter key
-
   bcr.start(argc, argv);
 
-  bcr.welcome();
+  //bcr.welcome();
 
-  bcr.show_info();
+  //bcr.show_info();
 
 
   

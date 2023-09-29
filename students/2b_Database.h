@@ -11,17 +11,18 @@ using namespace std;
 class Database 
 {
 private:
-/**
- * A vector containing all instances of barcharts.
- * >>>> Each barchart contains a frame of animation from the animation.
-*/
-std::vector<Barchart> barcharts; 
+    /**
+     * A vector containing all instances of barcharts.
+     * >>>> Each barchart contains a frame of animation from the animation.
+    */
+    vector<Barchart> barcharts; 
 
 public:
-    // n_category (increases if a new category is found) TODO
-    string main_title;
-    string label;
-    string source;
+
+    vector<string> categories; /**< Number of categories the file has*/
+    string main_title; /**< Title (first line of the input file)*/
+    string label; /**< Label (second line of the input file)*/
+    string source; /**< Source (third line of the input file)*/
 
     /**
      * Function that reads the file until the end, creating barchart instances
@@ -29,7 +30,12 @@ public:
     */
     void data_read(int n_bars, int fps);
 
+    /**
+     * Funtion that returns barcharts_size
+    */
     int barcharts_size();
+
+    void max_categories(Barchart b_chart);
 
 };
 

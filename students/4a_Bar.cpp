@@ -20,6 +20,7 @@ void Bar::read_line(){
     items.value = stoi(tk.get_token());
     tk.next();
     items.category = tk.get_token();
+    
 
 }
 
@@ -29,4 +30,8 @@ void Bar::show_line(){
 
 int Bar::value(){
     return items.value;
+}
+
+string Bar::categories(){
+    return items.category;
 }

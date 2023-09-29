@@ -42,11 +42,9 @@ void Barchart::sort_bars(size_t start, size_t end) {
         }
 
         // Copy the merged elements back into the original vector
-        for (std::size_t i = start; i <= end; i++) {
+        for (size_t i = start; i <= end; i++) {
             bars[i] = merged[i - start];
         }
-        
-        
     
     }
 
@@ -63,11 +61,31 @@ void Barchart::b_chart_read(int times){
         bars.push_back(bar);
     }
     sort_bars(0, bars.size() - 1);
+    check_categories();
     for (int i = 0; i < bars.size(); i++){
         bars[i].show_line();
     } 
+
+    for (int i = 0; i < n_categories.size(); i++){
+        cout << n_categories[i] << "/";
+    } cout <<endl;
 }
 
 void Barchart::reset(){
-    bars.clear();
+    bars.clear();   
+}
+
+void Barchart::check_categories(){
+    
+    for (int i = 0; i < bars.size(); i++){
+        auto it = find(n_categories.begin(), n_categories.end(), bars[i].categories());
+        if (it != n_categories.end()) {
+            // Element found
+            // Do nothing
+        } else {
+            // Element not found
+            // Add it to the list
+            n_categories.push_back(bars[i].categories());
+        }
+    }
 }

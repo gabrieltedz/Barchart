@@ -16,6 +16,7 @@ private:
     */
     vector<Bar> bars;
 public:
+    vector<string> n_categories;
     /**
      * Sorts bars from biggest to smallest from top-down
     */
@@ -28,6 +29,7 @@ public:
 
     void reset();
 
+    void check_categories();
 };
 
 #endif
