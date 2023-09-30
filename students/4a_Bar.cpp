@@ -44,3 +44,7 @@ string Bar::category(){
 string Bar::label(){
     return items.label;
 }
+
+string Bar::time_stamp(){
+    return items.time_stamp;
+}

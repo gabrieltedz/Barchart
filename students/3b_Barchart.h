@@ -16,6 +16,7 @@ private:
     */
     vector<Bar> bars;
 public:
+    string timestamp;
     vector<string> n_categories;
     /**
      * Sorts bars from biggest to smallest from top-down
@@ -36,6 +37,8 @@ public:
     void show_bars(int n_bars);
 
     int calculate_bar_lenght(int i);
+
+    void x_axis();
 };
 
 #endif

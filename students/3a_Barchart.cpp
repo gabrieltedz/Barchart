@@ -63,6 +63,7 @@ void Barchart::b_chart_read(int times, std::istream& stream){
     }
     sort_bars(0, bars.size() - 1);
     check_categories();
+    timestamp = bars[0].time_stamp();
     /*if (bars.size() < 15){
         for (int i = 0; i < bars.size(); i++){
             bars[i].show_line(); 
@@ -148,3 +149,7 @@ int Barchart::calculate_bar_lenght(int i){
 
     return length_bar;
 }
+
+ void Barchart::x_axis(){
+    
+ }

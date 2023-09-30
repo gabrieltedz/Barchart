@@ -69,9 +69,12 @@ void Database::animation(int n_bars, int fps){
         //Jump(); Used to jump the lines and give the illusion of animation
         std::cout << main_title << std::endl << std::endl;
 
-        std::cout << label << std::endl << std::endl; 
+        std::cout << "Timestamp: " << barcharts[i].timestamp << std::endl << std::endl;
             
         barcharts[i].show_bars(n_bars);
+        barcharts[i].x_axis();
+
+        std::cout << label << std::endl << std::endl; 
 
         std::chrono::milliseconds duration{1000 / fps};
         std::this_thread::sleep_for(duration);

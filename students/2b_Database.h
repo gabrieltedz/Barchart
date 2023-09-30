@@ -41,6 +41,7 @@ public:
     void max_categories(Barchart b_chart);
 
     void animation(int n_bars, int fps);
+
 };
 
 #endif

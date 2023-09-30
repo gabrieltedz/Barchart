@@ -42,6 +42,7 @@ void read_line(std::istream& stream);
 float value();
 string label();
 string category();
+string time_stamp();
 
 void show_line();
 
