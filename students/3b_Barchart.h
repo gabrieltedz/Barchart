@@ -34,6 +34,8 @@ public:
     int size();
 
     void show_bars(int n_bars);
+
+    int calculate_bar_lenght(int i);
 };
 
 #endif

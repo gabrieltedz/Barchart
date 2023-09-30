@@ -40,10 +40,12 @@ public:
 void read_line(std::istream& stream); 
 
 float value();
+string label();
+string category();
 
 void show_line();
 
-string categories();
+
 };
 
 #endif

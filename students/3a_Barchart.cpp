@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include <cmath>
 using namespace std;
 
 /**
@@ -62,13 +63,16 @@ void Barchart::b_chart_read(int times, std::istream& stream){
     }
     sort_bars(0, bars.size() - 1);
     check_categories();
-    /*for (int i = 0; i < bars.size(); i++){
-        bars[i].show_line();
+    /*if (bars.size() < 15){
+        for (int i = 0; i < bars.size(); i++){
+            bars[i].show_line(); 
+        } cout << endl;
+    } else {
+        for (int i = 0; i < 15; i++){
+            bars[i].show_line(); 
+        } cout << endl;
     }*/
-
-    /*for (int i = 0; i < n_categories.size(); i++){
-        cout << n_categories[i] << "/";
-    } cout <<endl;*/
+     
 }
 
 void Barchart::reset(){
@@ -78,14 +82,14 @@ void Barchart::reset(){
 void Barchart::check_categories(){
     
     for (int i = 0; i < bars.size(); i++){
-        auto it = find(n_categories.begin(), n_categories.end(), bars[i].categories());
+        auto it = find(n_categories.begin(), n_categories.end(), bars[i].category());
         if (it != n_categories.end()) {
             // Element found
             // Do nothing
         } else {
             // Element not found
             // Add it to the list
-            n_categories.push_back(bars[i].categories());
+            n_categories.push_back(bars[i].category());
         }
     }
 }
@@ -101,18 +105,46 @@ void Barchart::show_bars(int n_bars){
                 for (int j = 0; j < 120; j++){
                     std::cout << Color::tcolor("█", Color::RED, Color::BOLD);
                 } 
+                std::cout << " " << bars[i].label() << " [" << bars[i].value() << "]";
+                std::cout << std::endl << std::endl;
                 
             } else {
-                std::cout << Color::tcolor("█", Color::RED, Color::BOLD);
-            }
+                for (int j = 0; j < calculate_bar_lenght(i); j++){
+                    std::cout << Color::tcolor("█", Color::GREEN, Color::REGULAR);
+                }
+                std::cout << " " << bars[i].label() << " [" << bars[i].value() << "]";
+                std::cout << std::endl << std::endl;
+            } 
         }
 
         for (int i = 0; i < n_bars - bars.size(); i++){
             std::cout << std::endl << std::endl;
-        }
+        } 
     } else {
         for (int i = 0; i < n_bars; i++){
-            std::cout << Color::tcolor("█", Color::RED, Color::BOLD);
-        }
+            if (i == 0){
+                for (int j = 0; j < 120; j++){
+                    std::cout << Color::tcolor("█", Color::RED, Color::BOLD);
+                } 
+                std::cout << " " << bars[i].label() << " [" << bars[i].value() << "]";
+                std::cout << std::endl << std::endl;
+                
+            }
+            else {
+                for (int j = 0; j < calculate_bar_lenght(i); j++){
+                    std::cout << Color::tcolor("█", Color::GREEN, Color::BOLD);
+                }
+                std::cout << " " << bars[i].label() << " [" << bars[i].value() << "]";
+                std::cout << std::endl << std::endl;
+            }
+        } 
     }
+}
+
+int Barchart::calculate_bar_lenght(int i){
+    int length_bar{0};
+
+    length_bar = std::floor((120 * bars[i].value()) / bars[0].value());
+
+    return length_bar;
 }

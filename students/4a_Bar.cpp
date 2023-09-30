@@ -35,6 +35,12 @@ float Bar::value(){
     return items.value;
 }
 
-string Bar::categories(){
+
+
+string Bar::category(){
     return items.category;
+}
+
+string Bar::label(){
+    return items.label;
 }

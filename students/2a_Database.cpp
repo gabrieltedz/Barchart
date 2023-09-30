@@ -15,8 +15,8 @@ void Database::data_read(int n_bars, int fps, std::string name_file)
     archive.open(name_file);
 
     std::getline(archive, main_title);
-    std::getline(archive, source);
     std::getline(archive, label);
+    std::getline(archive, source);
 
     string aux;
     int times;
@@ -35,6 +35,7 @@ void Database::data_read(int n_bars, int fps, std::string name_file)
         barcharts.push_back(b_chart);
 
         b_chart.reset();
+
 
         
     }
