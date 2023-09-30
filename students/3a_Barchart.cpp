@@ -106,14 +106,14 @@ void Barchart::show_bars(int n_bars){
                 for (int j = 0; j < 120; j++){
                     std::cout << Color::tcolor("█", Color::RED, Color::BOLD);
                 } 
-                std::cout << " " << bars[i].label() << " [" << bars[i].value() << "]";
+                std::cout << " " << bars[i].label() << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
                 std::cout << std::endl << std::endl;
                 
             } else {
                 for (int j = 0; j < calculate_bar_lenght(i); j++){
                     std::cout << Color::tcolor("█", Color::GREEN, Color::REGULAR);
                 }
-                std::cout << " " << bars[i].label() << " [" << bars[i].value() << "]";
+                std::cout << " " << bars[i].label() << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
                 std::cout << std::endl << std::endl;
             } 
         }
@@ -127,7 +127,7 @@ void Barchart::show_bars(int n_bars){
                 for (int j = 0; j < 120; j++){
                     std::cout << Color::tcolor("█", Color::RED, Color::BOLD);
                 } 
-                std::cout << " " << bars[i].label() << " [" << bars[i].value() << "]";
+                std::cout << " " << bars[i].label() << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
                 std::cout << std::endl << std::endl;
                 
             }
@@ -135,7 +135,7 @@ void Barchart::show_bars(int n_bars){
                 for (int j = 0; j < calculate_bar_lenght(i); j++){
                     std::cout << Color::tcolor("█", Color::GREEN, Color::BOLD);
                 }
-                std::cout << " " << bars[i].label() << " [" << bars[i].value() << "]";
+                std::cout << " " << bars[i].label() << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
                 std::cout << std::endl << std::endl;
             }
         } 

@@ -9,7 +9,7 @@ using namespace std;
 */
 struct BarItem {
     
-    string time_stamp; 
+    string time_stamp;
     string label;
     string dummy;
     float value;
