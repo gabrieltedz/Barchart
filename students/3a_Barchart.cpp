@@ -62,13 +62,13 @@ void Barchart::b_chart_read(int times, std::istream& stream){
     }
     sort_bars(0, bars.size() - 1);
     check_categories();
-    for (int i = 0; i < bars.size(); i++){
+    /*for (int i = 0; i < bars.size(); i++){
         bars[i].show_line();
-    } 
+    }*/
 
-    for (int i = 0; i < n_categories.size(); i++){
+    /*for (int i = 0; i < n_categories.size(); i++){
         cout << n_categories[i] << "/";
-    } cout <<endl;
+    } cout <<endl;*/
 }
 
 void Barchart::reset(){
@@ -86,6 +86,33 @@ void Barchart::check_categories(){
             // Element not found
             // Add it to the list
             n_categories.push_back(bars[i].categories());
+        }
+    }
+}
+
+int Barchart::size(){
+    return bars.size();
+}
+
+void Barchart::show_bars(int n_bars){
+    if (bars.size() < n_bars){
+        for (int i = 0; i < bars.size(); i++){
+            if (i == 0){
+                for (int j = 0; j < 120; j++){
+                    std::cout << Color::tcolor("█", Color::RED, Color::BOLD);
+                } 
+                
+            } else {
+                std::cout << Color::tcolor("█", Color::RED, Color::BOLD);
+            }
+        }
+
+        for (int i = 0; i < n_bars - bars.size(); i++){
+            std::cout << std::endl << std::endl;
+        }
+    } else {
+        for (int i = 0; i < n_bars; i++){
+            std::cout << Color::tcolor("█", Color::RED, Color::BOLD);
         }
     }
 }

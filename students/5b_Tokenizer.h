@@ -10,6 +10,7 @@
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include "text_color.h"
 
 using std::quoted;
 using namespace std;

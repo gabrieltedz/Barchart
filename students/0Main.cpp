@@ -11,17 +11,13 @@ int main(int argc, char **argv) {
 
   bcr.start(argc, argv);
 
-  //bcr.welcome();
+  bcr.welcome();
 
-  //bcr.show_info();
-
-
-  
   bcr.bcr_read_file(bcr.n_bars, bcr.fps);
 
+  bcr.show_info(); // Will wait for enter from user
 
-  
-  bcr.show_info();
+  bcr.animation(bcr.n_bars, bcr.fps);
 
   
 

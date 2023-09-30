@@ -30,6 +30,10 @@ public:
     void reset();
 
     void check_categories();
+
+    int size();
+
+    void show_bars(int n_bars);
 };
 
 #endif

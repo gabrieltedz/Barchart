@@ -26,8 +26,6 @@ void Database::data_read(int n_bars, int fps, std::string name_file)
     while (std::getline(archive >> std::ws, aux))
     {
 
-        cout << endl;
-
         times = stoi(aux);
 
         b_chart.b_chart_read(times, archive);
@@ -38,19 +36,18 @@ void Database::data_read(int n_bars, int fps, std::string name_file)
 
         b_chart.reset();
 
-        std::chrono::milliseconds duration{1000 / fps};
-        std::this_thread::sleep_for(duration);
+        
     }
 
     archive.close();
 
-    cout << "Categorias presentes no file: ";
+    /*cout << "Categorias presentes no file: ";
     for (int i = 0; i < categories.size(); i++)
     {
         cout << categories[i] << "/";
     }
-    cout << endl
-         << endl;
+    cout << endl 
+         << endl;*/
 }
 
 int Database::barcharts_size()
@@ -63,5 +60,20 @@ void Database::max_categories(Barchart b_chart)
     if (categories.size() < b_chart.n_categories.size())
     {
         categories = b_chart.n_categories;
+    }
+}
+
+void Database::animation(int n_bars, int fps){
+    for(int i = 0; i < barcharts.size(); i++){
+        //Jump(); Used to jump the lines and give the illusion of animation
+        std::cout << main_title << std::endl << std::endl;
+
+        std::cout << label << std::endl << std::endl; 
+            
+        barcharts[i].show_bars(n_bars);
+
+        std::chrono::milliseconds duration{1000 / fps};
+        std::this_thread::sleep_for(duration);
+
     }
 }

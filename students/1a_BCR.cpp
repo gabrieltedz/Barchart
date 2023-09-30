@@ -7,6 +7,7 @@ void BCR::start(int argc, char **argv){
     int intermed;
     if (argc == 1) {
         //do nothing (deafult)
+        // !!!!!!!!! ACtually the default should be 2 (the file is the the second argument)
     } 
     
     else if (argc > 1) {
@@ -79,11 +80,13 @@ void BCR::show_info(){
     cout << ">>> Title: " << database.main_title << endl;
     cout << ">>> Value is: " << database.label << endl;
     cout << ">>> " << database.source << endl;
-    // cout << ">>> # of categories found: "  << endl;
+    cout << ">>> # of categories found: " << database.categories.size()  << endl;
     cout << ">>> Press enter to begin the animation." << endl << endl;
+    std::cin.ignore();
+}
 
-    // cout << categories
-
+void BCR::animation(int n_bars ,int fps){
+    database.animation(n_bars, fps);
 }
 
 /**

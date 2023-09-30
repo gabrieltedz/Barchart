@@ -35,7 +35,7 @@ public:
     */
     void bcr_read_file(int n_bars, int fps);
 
-     
+    void animation(int n_bars, int fps);
     
 private:
     /**

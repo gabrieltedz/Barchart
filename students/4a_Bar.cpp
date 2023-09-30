@@ -17,7 +17,7 @@ void Bar::read_line(std::istream& stream){
     tk.next();
     items.dummy = tk.get_token();
     tk.next();
-    items.value = stoi(tk.get_token());
+    items.value = std::stof(tk.get_token());
     tk.next();
     items.category = tk.get_token();
     
@@ -28,7 +28,10 @@ void Bar::show_line(){
     cout << items.time_stamp << "." << items.label << "." << items.dummy << "." << items.value << "." << items.category << "." << endl;
 }
 
-int Bar::value(){
+/**
+ * Mudei de int para float, dps ver se não dá problema
+*/
+float Bar::value(){
     return items.value;
 }
 

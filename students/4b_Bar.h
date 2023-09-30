@@ -12,7 +12,7 @@ struct BarItem {
     string time_stamp; 
     string label;
     string dummy;
-    int value;
+    float value;
     string category;
 
 };
@@ -39,7 +39,7 @@ public:
  */ 
 void read_line(std::istream& stream); 
 
-int value();
+float value();
 
 void show_line();
 
