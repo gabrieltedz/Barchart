@@ -157,7 +157,8 @@ void Barchart::show_bars(int n_bars, vector<string> categories){
                 for (int j = 0; j < 120; j++){
                     bar_color(bars[i].category(), categories);
                 } 
-                std::cout << " " << bars[i].label() << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
+                name_color(bars[i].category(), categories, bars[i].label());
+                std::cout << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
                 std::cout << std::endl << std::endl;
                 
             }
@@ -166,7 +167,8 @@ void Barchart::show_bars(int n_bars, vector<string> categories){
                     
                     bar_color(bars[i].category(), categories);
                 }
-                std::cout << " " << bars[i].label() << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
+                name_color(bars[i].category(), categories, bars[i].label());
+                std::cout << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
                 std::cout << std::endl << std::endl;
             }
         } 

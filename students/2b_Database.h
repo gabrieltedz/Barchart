@@ -42,6 +42,8 @@ public:
 
     void animation(int n_bars, int fps);
 
+    void legend();
+
 };
 
 #endif

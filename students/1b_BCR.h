@@ -9,13 +9,13 @@ class BCR
 {
 public:
     /**
-     * Numbers of bars will be displayed (deafult 5)
+     * Numbers of bars will be displayed (default 5)
     */
     int n_bars = 5;
     /**
-     * Frames per second (default 24)
+     * Frames per second (default 12)
     */
-    int fps = 24;
+    int fps = 12;
 
     std::string name_file;                 /*!< File name. */
 

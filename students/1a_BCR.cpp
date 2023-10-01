@@ -81,7 +81,16 @@ void BCR::show_info(){
     cout << ">>> Value is: " << database.label << endl;
     cout << ">>> " << database.source << endl;
     cout << ">>> # of categories found: " << database.categories.size()  << endl;
-    cout << ">>> Press enter to begin the animation." << endl << endl;
+    for (int i = 0; i < database.categories.size(); i++){
+        if (i % 3 == 0){
+            std::cout << std::endl;
+        }
+        std::cout << "[" << database.categories[i] << "] "; 
+    }
+    std::cout << std::endl << std::endl;
+    cout << ">>> Press enter to begin the animation." << std::endl;
+    
+    
     std::cin.ignore();
 }
 

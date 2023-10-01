@@ -67,21 +67,32 @@ void Database::max_categories(Barchart b_chart)
 
 void Database::animation(int n_bars, int fps){
     for(int i = 0; i < barcharts.size(); i++){
-        //Jump(); Used to jump the lines and give the illusion of animation
+        for (int j = 0; j < 40 - (n_bars * 2); j++){
+            std::cout << std::endl;
+        }
         std::cout << main_title << std::endl << std::endl;
 
         std::cout << "Timestamp: " << barcharts[i].timestamp << std::endl << std::endl;
             
         barcharts[i].show_bars(n_bars, categories);
         barcharts[i].x_axis();
+        std::cout << "+------------------------------------------------------------------------------------------------------+" << std::endl;
 
-        std::cout << "axis here" << std::endl;
         std::cout << label << std::endl << std::endl; 
 
         std::cout << source << std::endl;
+
+        legend();
 
         std::chrono::milliseconds duration{1000 / fps};
         std::this_thread::sleep_for(duration);
 
     }
+}
+
+void Database::legend(){
+    for (int i = 0; i < categories.size(); i++){
+        std::cout << Color::tcolor("█", Color::getColorByIndex(i), Color::REGULAR);
+        std::cout << ": " << Color::tcolor(categories[i], Color::getColorByIndex(i), Color::REGULAR) << " ";
+    } std::cout << endl;
 }
