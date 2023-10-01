@@ -42,6 +42,7 @@ void Database::data_read(int n_bars, int fps, std::string name_file)
 
     archive.close();
 
+    /* Residual code here*/
     /*cout << "Categorias presentes no file: ";
     for (int i = 0; i < categories.size(); i++)
     {

@@ -9,11 +9,11 @@ using namespace std;
 */
 struct BarItem {
     
-    string time_stamp;
-    string label;
-    string dummy;
-    float value;
-    string category;
+    string time_stamp; /**< The time stamp the data was captured on.*/
+    string label; /**< The data label.*/
+    string dummy; /**< This is any other information related to the data item that is not going to be used in the visualization.*/
+    float value; /**< The value of the data item to be represented by a single bar in a chart.*/
+    string category; /**< A category the data item belongs to.*/
 
 };
 
@@ -39,11 +39,15 @@ public:
  */ 
 void read_line(std::istream& stream); 
 
-float value();
-string label();
-string category();
-string time_stamp();
+float value(); /*Returns the items.values*/
+string label(); /*Returns the items.label*/
+string category(); /*Returns the items.category*/
+string time_stamp(); /*Returns the items.time_stamp*/
 
+/**
+ * @brief Shows a SINGLE line
+ * Used for testing.
+*/
 void show_line();
 
 
