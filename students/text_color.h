@@ -48,9 +48,18 @@ namespace Color {
     static constexpr short REVERSE{ 7 };
 
     /// List of colors. You may which to change color ordering.
-    static constexpr  array< value_t, 14>color_list{
-        31, 32, 33, 34, 35, 36, 37,
-        91, 92, 93, 94, 95, 96, 97};
+    static constexpr std::array<short, 16> color_list{
+        RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, BLACK, BRIGHT_RED, BRIGHT_GREEN, 
+        BRIGHT_YELLOW, BRIGHT_BLUE, BRIGHT_MAGENTA, BRIGHT_CYAN, BRIGHT_BLACK, WHITE, BRIGHT_WHITE
+    };
+
+    // Function to get a color by index
+    inline short getColorByIndex(size_t index) {
+        if (index < color_list.size()) {
+            return color_list[index];
+        }
+        return WHITE; // Default to white if index is out of range
+    }
 
     /// Returns a string with a colored message.
     /*!

@@ -72,10 +72,13 @@ void Database::animation(int n_bars, int fps){
 
         std::cout << "Timestamp: " << barcharts[i].timestamp << std::endl << std::endl;
             
-        barcharts[i].show_bars(n_bars);
+        barcharts[i].show_bars(n_bars, categories);
         barcharts[i].x_axis();
 
+        std::cout << "axis here" << std::endl;
         std::cout << label << std::endl << std::endl; 
+
+        std::cout << source << std::endl;
 
         std::chrono::milliseconds duration{1000 / fps};
         std::this_thread::sleep_for(duration);

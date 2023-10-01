@@ -48,7 +48,7 @@ public:
     /**
      * Function to output all bars of the current chart with colors
     */
-    void show_bars(int n_bars);
+    void show_bars(int n_bars, vector<string> categories);
 
     /**
      * Function that calculates the lenght of the current bar in relation to
@@ -60,6 +60,9 @@ public:
      * Function to output the x axis below the chart
     */
     void x_axis();
+
+    void bar_color(std::string category, std::vector<std::string> categories);
+    void name_color(std::string category, std::vector<std::string> categories, string name);
 };
 
 #endif
