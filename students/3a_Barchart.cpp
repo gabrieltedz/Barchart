@@ -197,17 +197,71 @@ int Barchart::calculate_bar_lenght(int i){
 void Barchart::x_axis(int n_bars){
     std::cout << "+";
     int length_min_bar{0};
+    int aux1{0}, aux2{0}, aux3{0}, aux4{0}, aux5{0};
     if (bars.size() < n_bars){
         int m = bars.size() - 1;
         length_min_bar = std::floor((120 * bars[m].value()) / bars[0].value());
+        
         for (int i = 0; i < length_min_bar - 1 ; i++){
             std::cout << "-";
+        } std::cout << "+";
+
+        aux1 = floor((115 - length_min_bar) / 5);
+        for (int i = 0; i < aux1; i++){
+            std::cout << "-";
+        } std::cout << "+";
+
+        aux2 = floor(((115 - length_min_bar) * 2) / 5) - aux1;
+        for (int i = 0; i < aux2; i++){
+            std::cout << "-";
+        } std::cout << "+";
+
+        aux3 = floor(((115 - length_min_bar) * 3)/ 5) - floor(((115 - length_min_bar) * 2) / 5);
+        for (int i = 0; i < aux3; i++){
+            std::cout << "-";
+        } std::cout << "+";
+
+        aux4 = floor(((115 - length_min_bar) * 4)/ 5) - floor(((115 - length_min_bar) * 3) / 5);
+        for (int i = 0; i < aux4; i++){
+            std::cout << "-";
+        } std::cout << "+";
+
+        aux5 = floor(((115 - length_min_bar) * 5)/ 5) - floor(((115 - length_min_bar) * 4) / 5);
+        for (int i = 0; i < aux5; i++){
+            std::cout << "-";
         }
+
     } else if (bars.size() >= n_bars){
         length_min_bar = std::floor((120 * bars[n_bars - 1].value()) / bars[0].value());
         for (int i = 0; i < length_min_bar - 1 ; i++){
             std::cout << "-";
+        } std::cout << "+";
+
+        aux1 = floor((115 - length_min_bar) / 5);
+        for (int i = 0; i < aux1; i++){
+            std::cout << "-";
+        } std::cout << "+";
+
+        aux2 = floor(((115 - length_min_bar) * 2) / 5) - aux1;
+        for (int i = 0; i < aux2; i++){
+            std::cout << "-";
+        } std::cout << "+";
+
+        aux3 = floor(((115 - length_min_bar) * 3)/ 5) - floor(((115 - length_min_bar) * 2) / 5);
+        for (int i = 0; i < aux3; i++){
+            std::cout << "-";
+        } std::cout << "+";
+
+        aux4 = floor(((115 - length_min_bar) * 4)/ 5) - floor(((115 - length_min_bar) * 3) / 5);
+        for (int i = 0; i < aux4; i++){
+            std::cout << "-";
+        } std::cout << "+";
+
+        aux5 = floor(((115 - length_min_bar) * 5)/ 5) - floor(((115 - length_min_bar) * 4) / 5);
+        for (int i = 0; i < aux5; i++){
+            std::cout << "-";
         }
+
     }
     std::cout << "+" << std::endl;
     
