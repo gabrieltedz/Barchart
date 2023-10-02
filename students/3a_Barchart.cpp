@@ -207,8 +207,12 @@ void Barchart::x_axis(int n_bars){
             length_min_bar = 120;
         } else {
             length_min_bar = std::floor((120 * bars[m].value()) / bars[0].value());
+            if (length_min_bar == 0){
+                length_min_bar = 120;
+            }
         }
         std::cout << "+";
+        
         for (int i = 0; i < length_min_bar - 1 ; i++){
             std::cout << "-";
         }     
@@ -280,9 +284,12 @@ void Barchart::x_axis(int n_bars){
     
     } else if (bars.size() >= n_bars) {
         if (bars[n_bars - 1].value() == 0 || bars[0].value() == 0){
-            length_min_bar = 1;
+            length_min_bar = 120;
         } else {
             length_min_bar = std::floor((120 * bars[n_bars - 1].value()) / bars[0].value());
+            if (length_min_bar == 0){
+                length_min_bar = 120;
+            }
         }
 
         //std::cout << length_min_bar << std::endl;
@@ -355,6 +362,7 @@ void Barchart::x_axis(int n_bars){
             std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
             std::cout << std::setw(((120 - length_min_bar) / 5) - str1.size() + str2.size()) << str2 << std::endl;
         }
+        
         
     }
         
