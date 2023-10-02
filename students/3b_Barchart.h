@@ -72,6 +72,8 @@ public:
      * color based on category
     */
     void name_color(std::string category, std::vector<std::string> categories, string name);
+
+    int round_up(int number, int power);
 };
 
 #endif
