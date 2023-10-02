@@ -53,7 +53,9 @@ namespace Color {
         BRIGHT_YELLOW, BRIGHT_BLUE, BRIGHT_MAGENTA, BRIGHT_CYAN, BRIGHT_BLACK, WHITE, BRIGHT_WHITE
     };
 
-    // Function to get a color by index
+    /**
+     * Function to get a color by index
+    */ 
     inline short getColorByIndex(size_t index) {
         if (index < color_list.size()) {
             return color_list[index];

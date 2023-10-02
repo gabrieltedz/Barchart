@@ -25,7 +25,7 @@ public:
     string label; /**< Label (second line of the input file)*/
     string source; /**< Source (third line of the input file)*/
     
-    std::ifstream archive;
+    std::ifstream archive; /**Name of the archive we will open to read*/
 
     /**
      * Function that reads the file until the end, creating barchart instances
@@ -38,10 +38,20 @@ public:
     */
     int barcharts_size();
 
+    /**
+     * Checks if the current barchart has a new category, if so, adds it
+     * to the database categories (which is the "global" max amount of categories)
+    */
     void max_categories(Barchart b_chart);
 
+    /**
+     * Starts the animation with the defined bars numbers and fps
+    */
     void animation(int n_bars, int fps);
 
+    /**
+     * Legend of colors below the barchart
+    */
     void legend();
 
 };

@@ -61,7 +61,16 @@ public:
     */
     void x_axis();
 
+    /**
+     * Auxiliar function to output the bar with it's respective color
+     * color based on category
+    */
     void bar_color(std::string category, std::vector<std::string> categories);
+
+    /**
+     * Auxiliar function to output the name of current bar (label) with it's respective color
+     * color based on category
+    */
     void name_color(std::string category, std::vector<std::string> categories, string name);
 };
 

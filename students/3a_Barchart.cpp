@@ -113,6 +113,7 @@ void Barchart::check_categories(){
         }
     }
 }
+
 /**
  * Function to output the bars
 */
@@ -197,6 +198,9 @@ void Barchart::x_axis(){
     
 }
 
+/**
+ * To output current bar with its respective color
+*/
 void Barchart::bar_color(std::string category, std::vector<std::string> categories){
     if (categories.size() >= 15){
     // white
@@ -249,6 +253,9 @@ void Barchart::bar_color(std::string category, std::vector<std::string> categori
     
 }
 
+/**
+ * To output current bar name (label) with its respective color
+*/
 void Barchart::name_color(std::string category, std::vector<std::string> categories, string name){
     if (categories.size() >= 15){
     // white
