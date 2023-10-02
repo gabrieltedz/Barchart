@@ -205,11 +205,11 @@ void Barchart::x_axis(int n_bars){
         int m = bars.size() - 1;
 
         if (bars[m].value() == 0 || bars[0].value() == 0){
-            length_min_bar = 120;
+            length_min_bar = 119;
         } else {
             length_min_bar = std::floor((120 * bars[m].value()) / bars[0].value());
         }
-        std::cout << length_min_bar << std::endl;
+        //std::cout << length_min_bar << std::endl;
         for (int i = 0; i < length_min_bar - 1 ; i++){
             std::cout << "-";
         }     
@@ -226,11 +226,6 @@ void Barchart::x_axis(int n_bars){
             std::cout << "++++" << std::endl;
         } else if (length_min_bar == 116){
             std::cout << "+++++" << std::endl;
-        } else if (length_min_bar == 0){
-            std::cout << "++";
-            for (int i = 0; i < 117; i++){
-                std::cout << "-";
-            } std::cout << "+" << std::endl;
         } else {
             
             cout << "+";
@@ -285,13 +280,13 @@ void Barchart::x_axis(int n_bars){
     
     } else if (bars.size() >= n_bars) {
         if (bars[n_bars - 1].value() == 0 || bars[0].value() == 0){
-            length_min_bar = 120;
+            length_min_bar = 119;
         } else {
             length_min_bar = std::floor((120 * bars[n_bars - 1].value()) / bars[0].value());
         }
 
-        std::cout << length_min_bar << std::endl;
-        std::cout << "+";
+        //std::cout << length_min_bar << std::endl;
+        //std::cout << "+";
         for (int i = 0; i < length_min_bar - 1 ; i++){
             std::cout << "-";
         }
@@ -306,11 +301,6 @@ void Barchart::x_axis(int n_bars){
             std::cout << "++++" << std::endl;
         } else if (length_min_bar == 116){
             std::cout << "+++++" << std::endl;
-        } else if (length_min_bar == 0){
-            std::cout << "++";
-            for (int i = 0; i < 117; i++){
-                std::cout << "-";
-            } std::cout << "+" << std::endl;
         } else {
             
             std::cout << "+";
