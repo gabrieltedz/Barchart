@@ -95,8 +95,7 @@ void Database::animation(int n_bars, int fps){
         // Bars with colors
         barcharts[i].show_bars(n_bars, categories);
         // X axis
-        barcharts[i].x_axis();
-        std::cout << "+------------------------------------------------------------------------------------------------------+" << std::endl;
+        barcharts[i].x_axis(n_bars);
 
         // Label
         std::cout << label << std::endl << std::endl; 
@@ -117,7 +116,12 @@ void Database::animation(int n_bars, int fps){
 */
 void Database::legend(){
     for (int i = 0; i < categories.size(); i++){
-        std::cout << Color::tcolor("█", Color::getColorByIndex(i), Color::REGULAR);
-        std::cout << ": " << Color::tcolor(categories[i], Color::getColorByIndex(i), Color::REGULAR) << " ";
+        if (categories.size() >= 15){
+            std::cout << Color::tcolor("█", Color::getColorByIndex(15), Color::REGULAR);
+            std::cout << ": " << Color::tcolor(categories[i], Color::getColorByIndex(15), Color::REGULAR) << " ";
+        } else {
+            std::cout << Color::tcolor("█", Color::getColorByIndex(i), Color::REGULAR);
+            std::cout << ": " << Color::tcolor(categories[i], Color::getColorByIndex(i), Color::REGULAR) << " ";
+        }
     } std::cout << endl;
 }

@@ -148,9 +148,9 @@ void Barchart::show_bars(int n_bars, vector<string> categories){
         }
 
         // Jump the missing lines here 
-        for (int i = 0; i < n_bars - bars.size(); i++){
+        /*for (int i = 0; i < n_bars - bars.size(); i++){
             std::cout << std::endl << std::endl;
-        } 
+        }*/ 
     } else {
         for (int i = 0; i < n_bars; i++){
             if (i == 0){
@@ -194,7 +194,22 @@ int Barchart::calculate_bar_lenght(int i){
 /**
  * Function to output the x axis below the chart
 */
-void Barchart::x_axis(){
+void Barchart::x_axis(int n_bars){
+    std::cout << "+";
+    int length_min_bar{0};
+    if (bars.size() < n_bars){
+        int m = bars.size() - 1;
+        length_min_bar = std::floor((120 * bars[m].value()) / bars[0].value());
+        for (int i = 0; i < length_min_bar - 1 ; i++){
+            std::cout << "-";
+        }
+    } else if (bars.size() >= n_bars){
+        length_min_bar = std::floor((120 * bars[n_bars - 1].value()) / bars[0].value());
+        for (int i = 0; i < length_min_bar - 1 ; i++){
+            std::cout << "-";
+        }
+    }
+    std::cout << "+" << std::endl;
     
 }
 

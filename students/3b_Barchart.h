@@ -59,7 +59,7 @@ public:
     /**
      * Function to output the x axis below the chart
     */
-    void x_axis();
+    void x_axis(int n_bars);
 
     /**
      * Auxiliar function to output the bar with it's respective color
