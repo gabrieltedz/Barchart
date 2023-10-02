@@ -195,7 +195,6 @@ int Barchart::calculate_bar_lenght(int i){
  * Function to output the x axis below the chart
 */
 void Barchart::x_axis(int n_bars){
-    std::cout << "+";
     int length_min_bar{0};
     int aux1{0}, aux2{0}, aux3{0}, aux4{0}, aux5{0};
     int rounded1{0}, rounded2{0};
@@ -205,11 +204,11 @@ void Barchart::x_axis(int n_bars){
         int m = bars.size() - 1;
 
         if (bars[m].value() == 0 || bars[0].value() == 0){
-            length_min_bar = 119;
+            length_min_bar = 120;
         } else {
             length_min_bar = std::floor((120 * bars[m].value()) / bars[0].value());
         }
-        //std::cout << length_min_bar << std::endl;
+        std::cout << "+";
         for (int i = 0; i < length_min_bar - 1 ; i++){
             std::cout << "-";
         }     
@@ -275,18 +274,20 @@ void Barchart::x_axis(int n_bars){
             str1 = std::to_string(temp);
             rounded1 = round_up(temp, (str1.size() - 2));
             str1 = std::to_string(rounded1);
-            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1 << std::endl;
+            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
+            std::cout << std::setw(((length_min_bar) / 5)) << bars[0].value() <<std::endl;
         }
     
     } else if (bars.size() >= n_bars) {
         if (bars[n_bars - 1].value() == 0 || bars[0].value() == 0){
-            length_min_bar = 119;
+            length_min_bar = 1;
         } else {
             length_min_bar = std::floor((120 * bars[n_bars - 1].value()) / bars[0].value());
         }
 
         //std::cout << length_min_bar << std::endl;
         //std::cout << "+";
+        std::cout << "+";
         for (int i = 0; i < length_min_bar - 1 ; i++){
             std::cout << "-";
         }
@@ -350,7 +351,9 @@ void Barchart::x_axis(int n_bars){
             str1 = std::to_string(temp);
             rounded1 = round_up(temp, (str1.size() - 2));
             str1 = std::to_string(rounded1);
-            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1 << std::endl;
+            str2 = std::to_string(static_cast<int>(bars[0].value()));
+            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
+            std::cout << std::setw(((120 - length_min_bar) / 5) - str1.size() + str2.size()) << str2 << std::endl;
         }
         
     }
