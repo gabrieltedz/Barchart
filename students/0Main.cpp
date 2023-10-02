@@ -7,8 +7,9 @@ using namespace std;
 /* 
 */
 int main(int argc, char **argv) {
+  /* Create BCR object*/  
   BCR bcr;
-
+  
   bcr.start(argc, argv);
 
   bcr.welcome();
