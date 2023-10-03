@@ -199,173 +199,104 @@ void Barchart::x_axis(int n_bars){
     int aux1{0}, aux2{0}, aux3{0}, aux4{0}, aux5{0};
     int rounded1{0}, rounded2{0};
     int temp;
-    std::string str1, str2, str3, str4, str5;
+    std::string str1, str2, str3, str4, str5, str6;
     if (bars.size() < n_bars){
-        int m = bars.size() - 1;
-
-        if (bars[m].value() == 0 || bars[0].value() == 0){
-            length_min_bar = 120;
-        } else {
-            length_min_bar = std::floor((120 * bars[m].value()) / bars[0].value());
-            if (length_min_bar == 0){
-                length_min_bar = 120;
-            }
-        }
-        std::cout << "+";
-        
-        for (int i = 0; i < length_min_bar - 1 ; i++){
-            std::cout << "-";
-        }     
-
-        
-
-        if (length_min_bar == 120){
-            std::cout << "+" << std::endl;
-        } else if (length_min_bar == 119){
-            std::cout << "++" << std::endl;
-        } else if (length_min_bar == 118){
-            std::cout << "+++" << std::endl;
-        } else if (length_min_bar == 117){
-            std::cout << "++++" << std::endl;
-        } else if (length_min_bar == 116){
-            std::cout << "+++++" << std::endl;
-        } else {
-            
-            cout << "+";
-
-            aux1 = floor((115 - length_min_bar) / 5);
-            for (int i = 0; i < aux1; i++){
-                std::cout << "-";
-            } std::cout << "+";
-        
-            aux2 = floor(((115 - length_min_bar) * 2) / 5) - aux1;
-            for (int i = 0; i < aux2; i++){
-                std::cout << "-";
-            } std::cout << "+";
-        
-            aux3 = floor(((115 - length_min_bar) * 3)/ 5) - floor(((115 - length_min_bar) * 2) / 5);
-            for (int i = 0; i < aux3; i++){
-                std::cout << "-";
-            } std::cout << "+";
-
-            aux4 = floor(((115 - length_min_bar) * 4)/ 5) - floor(((115 - length_min_bar) * 3) / 5);
-            for (int i = 0; i < aux4; i++){
-                std::cout << "-";
-            } std::cout << "+";
-        
-            aux5 = floor(((115 - length_min_bar) * 5)/ 5) - floor(((115 - length_min_bar) * 4) / 5);
-            for (int i = 0; i < aux5; i++){
-                std::cout << "-";
-            }
-            std::cout << "+" << std::endl;
-        }
-
-        temp = static_cast<int>(bars[m].value());
-
-        
-        if (temp < 1){
-            temp += 1;
-            str1 = std::to_string(temp);
-            rounded1 = round_up(temp, (str1.size() - 1));
-            
-        } else if (temp < 100){
-            str1 = std::to_string(temp);
-            rounded1 = round_up(temp, (str1.size() - 1));
-            
-        } else {
-            str1 = std::to_string(temp);
-            rounded1 = round_up(temp, (str1.size() - 2));
-            
-        }
-            str1 = std::to_string(rounded1);
-            str2 = std::to_string(static_cast<int>(bars[0].value()));
-            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
-            std::cout << std::setw(((120 - length_min_bar) / 5) - str1.size() + str2.size()) << str2 << std::endl;
-    
-    } else if (bars.size() >= n_bars) {
-        if (bars[n_bars - 1].value() == 0 || bars[0].value() == 0){
-            length_min_bar = 120;
-        } else {
-            length_min_bar = std::floor((120 * bars[n_bars - 1].value()) / bars[0].value());
-            if (length_min_bar == 0){
-                length_min_bar = 120;
-            }
-        }
-
-        //std::cout << length_min_bar << std::endl;
-        //std::cout << "+";
-        std::cout << "+";
-        for (int i = 0; i < length_min_bar - 1 ; i++){
-            std::cout << "-";
-        }
-        
-        if (length_min_bar == 120){
-            std::cout << "+" << std::endl;
-        } else if (length_min_bar == 119){
-            std::cout << "++" << std::endl;
-        } else if (length_min_bar == 118){
-            std::cout << "+++" << std::endl;
-        } else if (length_min_bar == 117){
-            std::cout << "++++" << std::endl;
-        } else if (length_min_bar == 116){
-            std::cout << "+++++" << std::endl;
-        } else {
-            
-            std::cout << "+";
-
-            aux1 = floor((115 - length_min_bar) / 5);
-            for (int i = 0; i < aux1; i++){
-                std::cout << "-";
-            } std::cout << "+";
-        
-            aux2 = floor(((115 - length_min_bar) * 2) / 5) - aux1;
-            for (int i = 0; i < aux2; i++){
-                std::cout << "-";
-            } std::cout << "+";
-        
-            aux3 = floor(((115 - length_min_bar) * 3)/ 5) - floor(((115 - length_min_bar) * 2) / 5);
-            for (int i = 0; i < aux3; i++){
-                std::cout << "-";
-            } std::cout << "+";
-
-            aux4 = floor(((115 - length_min_bar) * 4)/ 5) - floor(((115 - length_min_bar) * 3) / 5);
-            for (int i = 0; i < aux4; i++){
-                std::cout << "-";
-            } std::cout << "+";
-        
-            aux5 = floor(((115 - length_min_bar) * 5)/ 5) - floor(((115 - length_min_bar) * 4) / 5);
-            for (int i = 0; i < aux5; i++){
-                std::cout << "-";
-            }
-            std::cout << "+" << std::endl;
-            
-        }
-        
-        int temp = static_cast<int>(bars[n_bars - 1].value());
-
-        if (temp < 1){
-            temp += 1;
-            str1 = std::to_string(temp);
-            rounded1 = round_up(temp, (str1.size() - 1));
-            
-        } else if (temp < 100){
-            str1 = std::to_string(temp);
-            rounded1 = round_up(temp, (str1.size() - 1));
-            
-        } else {
-            str1 = std::to_string(temp);
-            rounded1 = round_up(temp, (str1.size() - 2));
-            
-        }
-            str1 = std::to_string(rounded1);
-            str2 = std::to_string(static_cast<int>(bars[0].value()));
-            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
-            std::cout << std::setw(((120 - length_min_bar) / 5) - str1.size() + str2.size()) << str2 << std::endl;
-        
+        n_bars = bars.size() - 1;
+    } else if (bars.size() >= n_bars){
+        n_bars -= 1;
     }
+
+    if (bars[n_bars].value() == 0 || bars[0].value() == 0){
+        length_min_bar = 120;
+    } else {
+        length_min_bar = std::floor((120 * bars[n_bars].value()) / bars[0].value());
+        std::cout << "eae" << length_min_bar << std::endl;
+        if (length_min_bar == 0){
+            length_min_bar = 120;
+        }
+    }
+    std::cout << "+";
+    
+    for (int i = 0; i < length_min_bar - 1 ; i++){
+        std::cout << "-";
+    }     
+
         
+
+    if (length_min_bar == 120){
+        std::cout << "+" << std::endl;
+    } else if (length_min_bar == 119){
+        std::cout << "++" << std::endl;
+    } else if (length_min_bar == 118){
+        std::cout << "+++" << std::endl;
+    } else if (length_min_bar == 117){
+        std::cout << "++++" << std::endl;
+    } else if (length_min_bar == 116){
+        std::cout << "+++++" << std::endl;
+    } else {
+        
+        cout << "+";
+
+        aux1 = floor((115 - length_min_bar) / 5);
+        for (int i = 0; i < aux1; i++){
+            std::cout << "-";
+        } std::cout << "+";
+    
+        aux2 = floor(((115 - length_min_bar) * 2) / 5) - aux1;
+        for (int i = 0; i < aux2; i++){
+            std::cout << "-";
+        } std::cout << "+";
+    
+        aux3 = floor(((115 - length_min_bar) * 3)/ 5) - floor(((115 - length_min_bar) * 2) / 5);
+        for (int i = 0; i < aux3; i++){
+            std::cout << "-";
+        } std::cout << "+";
+
+        aux4 = floor(((115 - length_min_bar) * 4)/ 5) - floor(((115 - length_min_bar) * 3) / 5);
+        for (int i = 0; i < aux4; i++){
+            std::cout << "-";
+        } std::cout << "+";
+    
+        aux5 = floor(((115 - length_min_bar) * 5)/ 5) - floor(((115 - length_min_bar) * 4) / 5);
+        for (int i = 0; i < aux5; i++){
+            std::cout << "-";
+        }
+        std::cout << "+" << std::endl;
+        }
+
+        temp = static_cast<int>(bars[n_bars].value());
+ 
+        if (temp < 1){
+            temp += 1;
+            str1 = std::to_string(temp);
+            rounded1 = round_up(temp, (str1.size() - 1));
+            
+        } else if (temp < 100){
+            str1 = std::to_string(temp);
+            rounded1 = round_up(temp, (str1.size() - 1));
+            
+        } else {
+            str1 = std::to_string(temp);
+            rounded1 = round_up(temp, (str1.size() - 2));
+            
+        }
+        str1 = std::to_string(rounded1);
+        str2 = std::to_string(round_up(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5), std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5)).size() - 2));
+        str3 = std::to_string(round_up(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5), std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5)).size() - 2));
+        str4 = std::to_string(round_up(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5), std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5)).size() - 2));
+        str5 = std::to_string(round_up(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5), std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5)).size() - 2));
+        str6 = std::to_string(round_up(static_cast<int>(bars[0].value()), std::to_string(static_cast<int>(bars[0].value())).size() - 2));
+        std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
+        std::cout << std::setw(aux1 - str1.size() + str2.size() + 1) << str2;
+        std::cout << std::setw((aux2 - str2.size() + str3.size() + 1)) << str3;
+        std::cout << std::setw((aux3 - str3.size() + str4.size() + 1)) << str4;
+        std::cout << std::setw((aux4 - str4.size() + str5.size() + 1)) << str5;
+        std::cout << std::setw((aux5 - str5.size() + str6.size() + 1)) << str6 << std::endl;
     
 }
+        
+    
+
 
 /**
  * To output current bar with its respective color
