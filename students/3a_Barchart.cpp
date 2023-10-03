@@ -123,58 +123,27 @@ void Barchart::show_bars(int n_bars, vector<string> categories){
      * the only difference is we will jump some lines at the end
     */
     if (bars.size() < n_bars){
+        n_bars = bars.size();
+    }   
+    for (int i = 0; i < n_bars; i++){
         
-        for (int i = 0; i < bars.size(); i++){
+        if (i == 0){ // For the first (biggest) draw 120 colored spaces
             
-            // For the first (biggest) draw 120 colored spaces
-            if (i == 0){
-                for (int j = 0; j < 120; j++){
-                    
-                    bar_color(bars[i].category(), categories);
-                } 
-                name_color(bars[i].category(), categories, bars[i].label());
-                std::cout << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
-                std::cout << std::endl << std::endl;
-                
-            } else { // Note that calculate_bar_lenght only goes if the bar is not the first one (biggest bar)
-                for (int j = 0; j < calculate_bar_lenght(i); j++){
-                    
-                    bar_color(bars[i].category(), categories);
-                }
-                name_color(bars[i].category(), categories, bars[i].label());
-                std::cout << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
-                std::cout << std::endl << std::endl;
-            } 
-        }
-
-        // Jump the missing lines here 
-        /*for (int i = 0; i < n_bars - bars.size(); i++){
+            bar_color(bars[i].category(), categories, 120);                
+            name_color(bars[i].category(), categories, bars[i].label());
+            std::cout << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
             std::cout << std::endl << std::endl;
-        }*/ 
-    } else {
-        for (int i = 0; i < n_bars; i++){
-            if (i == 0){
-                // For the first (biggest) draw 120 colored spaces
-                for (int j = 0; j < 120; j++){
-                    bar_color(bars[i].category(), categories);
-                } 
-                name_color(bars[i].category(), categories, bars[i].label());
-                std::cout << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
-                std::cout << std::endl << std::endl;
-                
-            }
-            else { // Note that calculate_bar_lenght only goes if the bar is not the first one (biggest bar)
-                for (int j = 0; j < calculate_bar_lenght(i); j++){
-                    
-                    bar_color(bars[i].category(), categories);
-                }
-                name_color(bars[i].category(), categories, bars[i].label());
-                std::cout << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
-                std::cout << std::endl << std::endl;
-            }
+            
+        } else { // Note that calculate_bar_lenght only goes if the bar is not the first one (biggest bar)
+            
+            bar_color(bars[i].category(), categories, calculate_bar_lenght(i));
+            name_color(bars[i].category(), categories, bars[i].label());
+            std::cout << " [" << std::fixed << std::setprecision(2) << bars[i].value() << "]";
+            std::cout << std::endl << std::endl;
         } 
     }
 }
+
 
 /**
  * To calculate the bar lenght is quite simple, just a "regra de 3", "rule of three"
@@ -197,8 +166,8 @@ int Barchart::calculate_bar_lenght(int i){
 void Barchart::x_axis(int n_bars){
     int length_min_bar{0};
     int aux1{0}, aux2{0}, aux3{0}, aux4{0}, aux5{0};
-    int rounded1{0}, rounded2{0};
-    int temp;
+    int rounded1{0};
+    int temp{0}, temp2{0};
     std::string str1, str2, str3, str4, str5, str6;
     if (bars.size() < n_bars){
         n_bars = bars.size() - 1;
@@ -206,13 +175,13 @@ void Barchart::x_axis(int n_bars){
         n_bars -= 1;
     }
 
-    if (bars[n_bars].value() == 0 || bars[0].value() == 0){
-        length_min_bar = 120;
-    } else {
+    if (bars[n_bars].value() == 0){
+        length_min_bar = 1;
+    }
+    else {
         length_min_bar = std::floor((120 * bars[n_bars].value()) / bars[0].value());
-        std::cout << "eae" << length_min_bar << std::endl;
         if (length_min_bar == 0){
-            length_min_bar = 120;
+            length_min_bar = 1;
         }
     }
     std::cout << "+";
@@ -262,37 +231,55 @@ void Barchart::x_axis(int n_bars){
             std::cout << "-";
         }
         std::cout << "+" << std::endl;
-        }
+    }
 
-        temp = static_cast<int>(bars[n_bars].value());
- 
-        if (temp < 1){
-            temp += 1;
-            str1 = std::to_string(temp);
-            rounded1 = round_up(temp, (str1.size() - 1));
-            
-        } else if (temp < 100){
-            str1 = std::to_string(temp);
-            rounded1 = round_up(temp, (str1.size() - 1));
-            
-        } else {
-            str1 = std::to_string(temp);
-            rounded1 = round_up(temp, (str1.size() - 2));
-            
-        }
-        str1 = std::to_string(rounded1);
-        str2 = std::to_string(round_up(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5), std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5)).size() - 2));
-        str3 = std::to_string(round_up(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5), std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5)).size() - 2));
-        str4 = std::to_string(round_up(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5), std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5)).size() - 2));
-        str5 = std::to_string(round_up(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5), std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5)).size() - 2));
-        str6 = std::to_string(round_up(static_cast<int>(bars[0].value()), std::to_string(static_cast<int>(bars[0].value())).size() - 2));
-        std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
-        std::cout << std::setw(aux1 - str1.size() + str2.size() + 1) << str2;
-        std::cout << std::setw((aux2 - str2.size() + str3.size() + 1)) << str3;
-        std::cout << std::setw((aux3 - str3.size() + str4.size() + 1)) << str4;
-        std::cout << std::setw((aux4 - str4.size() + str5.size() + 1)) << str5;
-        std::cout << std::setw((aux5 - str5.size() + str6.size() + 1)) << str6 << std::endl;
-    
+    temp = static_cast<int>(bars[n_bars].value());
+    // There's only one line, or the max and min bar lenght are the same.
+    if (length_min_bar == 120){
+        std::cout << "0";
+        rounded1 = round_up(temp, 0);
+        std::cout << setw(119 + std::to_string(rounded1).size()) << rounded1 << std::endl;
+    }
+
+    else {
+        if (temp < 10){
+        temp++;
+        
+        str1 = std::to_string(temp);
+        
+        rounded1 = round_up(temp, (str1.size() - 1));
+        
+    } else if (temp < 100){
+        str1 = std::to_string(temp);
+        rounded1 = round_up(temp, (str1.size() - 1));
+        
+    } else {
+        str1 = std::to_string(temp);
+        rounded1 = round_up(temp, (str1.size() - 2));
+        
+    }
+    str1 = std::to_string(rounded1);
+
+    if ((temp2 = std::stoi(str1)) > 100){
+    str2 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) / 5, std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5)).size() - 2));
+    str3 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 2 / 5, std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5)).size() - 2));
+    str4 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 3 / 5, std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5)).size() - 2));
+    str5 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 4 / 5, std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5)).size() - 2));
+    str6 = std::to_string(round_up(static_cast<int>(bars[0].value()) + 1, std::to_string(static_cast<int>(bars[0].value())).size() - 2));
+    } else {
+        str2 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) / 5, 0));//std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5)).size() - 2));
+        str3 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 2 / 5, 0));//std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5)).size() - 2));
+        str4 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 3 / 5, 0));//std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5)).size() - 2));
+        str5 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 4 / 5, 0));//std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5)).size() - 2));
+        str6 = std::to_string(round_up(static_cast<int>(bars[0].value()) + 1, 0));//std::to_string(static_cast<int>(bars[0].value())).size() - 2));
+    }
+    std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
+    std::cout << std::setw(aux1 - str1.size() + str2.size() + 1) << str2;
+    std::cout << std::setw((aux2 - str2.size() + str3.size() + 1)) << str3;
+    std::cout << std::setw((aux3 - str3.size() + str4.size() + 1)) << str4;
+    std::cout << std::setw((aux4 - str4.size() + str5.size() + 1)) << str5;
+    std::cout << std::setw((aux5 - str5.size() + str6.size() + 1)) << str6 << std::endl;
+    }
 }
         
     
@@ -301,56 +288,61 @@ void Barchart::x_axis(int n_bars){
 /**
  * To output current bar with its respective color
 */
-void Barchart::bar_color(std::string category, std::vector<std::string> categories){
+void Barchart::bar_color(std::string category, std::vector<std::string> categories, int bar_lenght){
+    
+    int index;
     if (categories.size() >= 15){
     // white
-        std::cout << Color::tcolor("█", Color::getColorByIndex(14), Color::REGULAR);
+        index = 14;
     } else {
         if (category == categories[0]){
+            index = 0;
             // red
-            std::cout << Color::tcolor("█", Color::getColorByIndex(0), Color::REGULAR);
         } else if (category == categories[1]){
             // green
-            std::cout << Color::tcolor("█", Color::getColorByIndex(1), Color::REGULAR);
+            index = 1;
         } else if (category == categories[2]){  
             // yellow
-            std::cout << Color::tcolor("█", Color::getColorByIndex(2), Color::REGULAR);
+            index = 2;
         } else if (category == categories[3]){
             // blue
-            std::cout << Color::tcolor("█", Color::getColorByIndex(3), Color::REGULAR);
+            index = 3;
         } else if (category == categories[4]){
             // magenta
-            std::cout << Color::tcolor("█", Color::getColorByIndex(4), Color::REGULAR);
+            index = 4;
         } else if (category == categories[5]){
             // cyan
-            std::cout << Color::tcolor("█", Color::getColorByIndex(5), Color::REGULAR);
+            index = 5;
         } else if (category == categories[6]){
             // black
-            std::cout << Color::tcolor("█", Color::getColorByIndex(6), Color::REGULAR);
+            index = 6;
         } else if (category == categories[7]){
             //bright red
-            std::cout << Color::tcolor("█", Color::getColorByIndex(7), Color::REGULAR);
+            index = 7;
         } else if (category == categories[8]){
             // bright green
-            std::cout << Color::tcolor("█", Color::getColorByIndex(8), Color::REGULAR);
+            index = 8;
         } else if (category == categories[9]){
             // bright yellow
-            std::cout << Color::tcolor("█", Color::getColorByIndex(9), Color::REGULAR);
+            index = 9;
         } else if (category == categories[10]){
             // bright blue
-            std::cout << Color::tcolor("█", Color::getColorByIndex(10), Color::REGULAR);
+            index = 10;
         } else if (category == categories[11]){
             // bright magenta
-            std::cout << Color::tcolor("█", Color::getColorByIndex(11), Color::REGULAR);
+            index = 11;
         } else if (category == categories[12]){
             // bright cyan
-            std::cout << Color::tcolor("█", Color::getColorByIndex(12), Color::REGULAR);
+            index = 12;
         } else if (category == categories[13]){
             // bright black
-            std::cout << Color::tcolor("█", Color::getColorByIndex(13), Color::REGULAR);
+            index = 13;
         }
+        
     }
-    
+    for (int i = 0; i < bar_lenght; i++){
+        std::cout << Color::tcolor("█", Color::getColorByIndex(index), Color::REGULAR);
+    }
 }
 
 /**
@@ -410,5 +402,6 @@ void Barchart::name_color(std::string category, std::vector<std::string> categor
     
 int Barchart::round_up(int number, int power) {
     int divisor = std::pow(10, power);
-    return ((number + divisor - 1) / divisor) * divisor;
+    int result = ((number + divisor - 1) / divisor) * divisor;
+    return (result < 1) ? 1 : result;
 }    

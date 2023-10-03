@@ -65,7 +65,7 @@ public:
      * Auxiliar function to output the bar with it's respective color
      * color based on category
     */
-    void bar_color(std::string category, std::vector<std::string> categories);
+    void bar_color(std::string category, std::vector<std::string> categories, int bar_length);
 
     /**
      * Auxiliar function to output the name of current bar (label) with it's respective color
