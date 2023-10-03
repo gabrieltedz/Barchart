@@ -267,20 +267,20 @@ void Barchart::x_axis(int n_bars){
             temp += 1;
             str1 = std::to_string(temp);
             rounded1 = round_up(temp, (str1.size() - 1));
-            str1 = std::to_string(rounded1);
-            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1 << std::endl;
+            
         } else if (temp < 100){
             str1 = std::to_string(temp);
             rounded1 = round_up(temp, (str1.size() - 1));
-            str1 = std::to_string(rounded1);
-            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1 << std::endl;
+            
         } else {
             str1 = std::to_string(temp);
             rounded1 = round_up(temp, (str1.size() - 2));
-            str1 = std::to_string(rounded1);
-            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
-            std::cout << std::setw(((length_min_bar) / 5)) << bars[0].value() <<std::endl;
+            
         }
+            str1 = std::to_string(rounded1);
+            str2 = std::to_string(static_cast<int>(bars[0].value()));
+            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
+            std::cout << std::setw(((120 - length_min_bar) / 5) - str1.size() + str2.size()) << str2 << std::endl;
     
     } else if (bars.size() >= n_bars) {
         if (bars[n_bars - 1].value() == 0 || bars[0].value() == 0){
@@ -347,22 +347,20 @@ void Barchart::x_axis(int n_bars){
             temp += 1;
             str1 = std::to_string(temp);
             rounded1 = round_up(temp, (str1.size() - 1));
-            str1 = std::to_string(rounded1);
-            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1 << std::endl;
+            
         } else if (temp < 100){
             str1 = std::to_string(temp);
             rounded1 = round_up(temp, (str1.size() - 1));
-            str1 = std::to_string(rounded1);
-            std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1 << std::endl;
+            
         } else {
             str1 = std::to_string(temp);
             rounded1 = round_up(temp, (str1.size() - 2));
+            
+        }
             str1 = std::to_string(rounded1);
             str2 = std::to_string(static_cast<int>(bars[0].value()));
             std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
             std::cout << std::setw(((120 - length_min_bar) / 5) - str1.size() + str2.size()) << str2 << std::endl;
-        }
-        
         
     }
         
