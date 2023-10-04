@@ -5,7 +5,7 @@
 using namespace std;
 
 /**
- * All types of information from each single line in the datafile.
+ * @brief All types of information from each single line in the datafile.
 */
 struct BarItem {
     
@@ -18,7 +18,7 @@ struct BarItem {
 };
 
 /**
- * @brief contains the information of a single bar.
+ * @brief Contains the information of a single bar.
 */
 class Bar
 {
@@ -34,8 +34,8 @@ public:
 /**
  * @brief Reads a SINGLE line 
  * 
- * (this function is called once for each line that contains objects from bars) 
- * (its called x times on barchart.read())
+ * @note This function is called once for each line that contains objects from bars.
+ * Its called on barchart.read()
  */ 
 void read_line(std::istream& stream); 
 

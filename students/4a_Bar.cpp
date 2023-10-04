@@ -2,7 +2,8 @@
 using namespace std;
 
 /**
- * Function to read a line
+ * @brief Function to read a line
+ * @param stream file to read from
 */
 void Bar::read_line(std::istream& stream){
     Tokenizer tk; // Tokenizer to separate the line in tokens
@@ -28,30 +29,40 @@ void Bar::read_line(std::istream& stream){
 }
 
 /**
- * Outputs a bar, used for testing
+ * @brief Outputs a bar, used for testing
 */
 void Bar::show_line(){
     cout << items.time_stamp << "." << items.label << "." << items.dummy << "." << items.value << "." << items.category << "." << endl;
 }
 
 
-/*Returns the items.value*/
+/**
+ * @brief Returns the items.value
+*/
 float Bar::value(){
     return items.value;
 }
 
 
-/* Returns the items.category*/
+/**
+ * @brief Returns the items.category
+*/
 string Bar::category(){
     return items.category;
 }
 
-/* Returns the items.label*/
+
+
+/**
+ * @brief Returns the items.label
+*/
 string Bar::label(){
     return items.label;
 }
 
-/* Returns the items.time_stamp*/
+/**
+ * @brief Returns the items.time_stamp
+*/
 string Bar::time_stamp(){
     return items.time_stamp;
 }

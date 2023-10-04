@@ -47,7 +47,7 @@ namespace Color {
     static constexpr short BLINK{ 5 };
     static constexpr short REVERSE{ 7 };
 
-    /// List of colors. You may which to change color ordering.
+    /// List of colors.
     static constexpr std::array<short, 16> color_list{
         RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, BLACK, BRIGHT_RED, BRIGHT_GREEN, 
         BRIGHT_YELLOW, BRIGHT_BLUE, BRIGHT_MAGENTA, BRIGHT_CYAN, BRIGHT_BLACK, WHITE, BRIGHT_WHITE

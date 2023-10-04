@@ -7,8 +7,14 @@
 using namespace std;
 
 /**
- * Mergesort sorting
-*/
+ * @brief Sorts a range of bars using the Merge Sort algorithm.
+ * This function implements the Merge Sort algorithm to sort a range of bars
+ * within the 'bars' vector in ascending order based on their values.
+ * @param start The starting index of the range to be sorted.
+ * @param end The ending index of the range to be sorted.
+ * @note This function modifies the 'bars' vector in place and
+ * doesn't order them in alfabetical order.
+ */
 void Barchart::sort_bars(size_t start, size_t end) {
 
     if (start < end) {
@@ -53,8 +59,9 @@ void Barchart::sort_bars(size_t start, size_t end) {
 
 
 /**
- * Function that calls the reading to form a barchart
- * Times is the number of lines (or bars) this barchart has
+ * @brief Function that calls the reading to form a barchart.
+ * @param times is the number of bars this barchart has and should expect to read.
+ * @param stream file to read from.
 */
 void Barchart::b_chart_read(int times, std::istream& stream){
     Bar bar;
@@ -70,38 +77,28 @@ void Barchart::b_chart_read(int times, std::istream& stream){
     check_categories();
     // Define the timestamp of this barchart
     timestamp = bars[0].time_stamp();
-
-    //residual code in testing
-    /*if (bars.size() < 15){
-        for (int i = 0; i < bars.size(); i++){
-            bars[i].show_line(); 
-        } cout << endl;
-    } else {
-        for (int i = 0; i < 15; i++){
-            bars[i].show_line(); 
-        } cout << endl;
-    }*/
      
 }
 
 /**
- * Resets the bars vector
+ * @brief Resets the bars vector
 */
 void Barchart::reset(){
     bars.clear();   
 }
 
 /**
- * Check if there's a new category, if there is, add it.
- * Since the n_categories are not reset between barcharts, this only adds a category
- * If it is a new one.
- * (So, all barcharts have all the categories that the data file provided until that point,
- * Even if the number of categories read in the barchart is lower than the total, this is very useful
- * Later on.)
+ * @brief Check if there's a new category, if so, adds it.
+ * 
+ * @note Since the n_categories are not reset between barcharts, this only adds a category
+ * if it's a new one.
+ * (So, all barcharts have all the categories that the datafile provided until that point,
+ * even if the number of categories read in that specific barchart is lower than the total)
 */
 void Barchart::check_categories(){
     
     for (int i = 0; i < bars.size(); i++){
+        // Check if the element is in the list.
         auto it = find(n_categories.begin(), n_categories.end(), bars[i].category());
         if (it != n_categories.end()) {
             // Element found
@@ -115,12 +112,16 @@ void Barchart::check_categories(){
 }
 
 /**
- * Function to output the bars
+ * @brief Function to output the bars with their colours
+ * @param n_bars max number of bars that can be displayed
+ * @param categories Total categories the database has
+ * @note categories is from database, not from barchart, this is because categories in the database
+ * contains all the categories in the file. 
 */
 void Barchart::show_bars(int n_bars, vector<string> categories){
     /**
-     * If the number of bars the barchart has is lower than the desired amout being displayed, do this:
-     * the only difference is we will jump some lines at the end
+     * If the number of bars the barchart has is lower than the desired amout being displayed
+     * then n_bars will be equal to bars.size(). Else, n_bars is the maximum amount of bars
     */
     if (bars.size() < n_bars){
         n_bars = bars.size();
@@ -146,7 +147,7 @@ void Barchart::show_bars(int n_bars, vector<string> categories){
 
 
 /**
- * To calculate the bar lenght is quite simple, just a "regra de 3", "rule of three"
+ * To calculate the bar lenght is quite simple, just a "rule of three".
 */
 int Barchart::calculate_bar_lenght(int i){
     int length_bar{0};
@@ -161,37 +162,57 @@ int Barchart::calculate_bar_lenght(int i){
 }
 
 /**
- * Function to output the x axis below the chart
+ * @brief Function to output the x axis below the chart
+ * @param n_bars amount of bars this barchart has
 */
 void Barchart::x_axis(int n_bars){
-    int length_min_bar{0};
+    
+    /**
+     * Variables initiation
+    */
+    int length_min_bar{0}; /*Length of the smallest bar*/
     int aux1{0}, aux2{0}, aux3{0}, aux4{0}, aux5{0};
     int rounded1{0};
     int temp{0}, temp2{0};
     std::string str1, str2, str3, str4, str5, str6;
+
+    // If n_bars is bigger than bars.size(), than the amount of bars that will be displayed is bars.size()
     if (bars.size() < n_bars){
-        n_bars = bars.size() - 1;
-    } else if (bars.size() >= n_bars){
-        n_bars -= 1;
+        n_bars = bars.size() - 1; // - 1 because the count starts at zero
+    } 
+    // If n_bars is smaller or equal to bars.size(), than the amount of bars that will be displayed is n_bars
+    else if (bars.size() >= n_bars){
+        n_bars -= 1; // - 1 because the count starts at zero
     }
 
+    // If the smallest bar value == 0
     if (bars[n_bars].value() == 0){
         length_min_bar = 1;
     }
+
+    // Else if the smallest bar is not zero
     else {
+        // Calculate the length of the smallest bar
         length_min_bar = std::floor((120 * bars[n_bars].value()) / bars[0].value());
+        
+        // If the smallest bar value == 0
         if (length_min_bar == 0){
             length_min_bar = 1;
         }
     }
+
+    /**
+     * Cout the "+-------------------" part up until the length of the smallest bar
+    */
     std::cout << "+";
-    
     for (int i = 0; i < length_min_bar - 1 ; i++){
         std::cout << "-";
     }     
 
         
-
+    /**
+     * Special cases
+    */
     if (length_min_bar == 120){
         std::cout << "+" << std::endl;
     } else if (length_min_bar == 119){
@@ -204,8 +225,12 @@ void Barchart::x_axis(int n_bars){
         std::cout << "+++++" << std::endl;
     } else {
         
+        // Cout "+", this is exactly 1 character ahead of the smallest bar length
         cout << "+";
 
+        /**
+         * Calculate and output the divison of the (max bar - min bar) / 5
+        */
         aux1 = floor((115 - length_min_bar) / 5);
         for (int i = 0; i < aux1; i++){
             std::cout << "-";
@@ -226,14 +251,16 @@ void Barchart::x_axis(int n_bars){
             std::cout << "-";
         } std::cout << "+";
     
-        aux5 = floor(((115 - length_min_bar) * 5)/ 5) - floor(((115 - length_min_bar) * 4) / 5);
+        aux5 = floor((115 - length_min_bar)) - floor(((115 - length_min_bar) * 4) / 5);
         for (int i = 0; i < aux5; i++){
             std::cout << "-";
         }
+        // This "+" is exactly one charachter ahead of the biggest bar.
         std::cout << "+" << std::endl;
     }
 
     temp = static_cast<int>(bars[n_bars].value());
+    
     // There's only one line, or the max and min bar lenght are the same.
     if (length_min_bar == 120){
         std::cout << "0";
@@ -267,13 +294,13 @@ void Barchart::x_axis(int n_bars){
     str5 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 4 / 5, std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5)).size() - 2));
     str6 = std::to_string(round_up(static_cast<int>(bars[0].value()) + 1, std::to_string(static_cast<int>(bars[0].value())).size() - 2));
     } else {
-        str2 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) / 5, 0));//std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5)).size() - 2));
-        str3 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 2 / 5, 0));//std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5)).size() - 2));
-        str4 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 3 / 5, 0));//std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5)).size() - 2));
-        str5 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 4 / 5, 0));//std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5)).size() - 2));
-        str6 = std::to_string(round_up(static_cast<int>(bars[0].value()) + 1, 0));//std::to_string(static_cast<int>(bars[0].value())).size() - 2));
+        str2 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) / 5, 0));
+        str3 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 2 / 5, 0));
+        str4 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 3 / 5, 0));
+        str5 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 4 / 5, 0));
+        str6 = std::to_string(round_up(static_cast<int>(bars[0].value()) + 1, 0));
     }
-    std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;
+    std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;                        
     std::cout << std::setw(aux1 - str1.size() + str2.size() + 1) << str2;
     std::cout << std::setw((aux2 - str2.size() + str3.size() + 1)) << str3;
     std::cout << std::setw((aux3 - str3.size() + str4.size() + 1)) << str4;
@@ -286,7 +313,7 @@ void Barchart::x_axis(int n_bars){
 
 
 /**
- * To output current bar with its respective color
+ * @brief To output current bar with its respective color
 */
 void Barchart::bar_color(std::string category, std::vector<std::string> categories, int bar_lenght){
     
@@ -399,9 +426,33 @@ void Barchart::name_color(std::string category, std::vector<std::string> categor
     }
     
 }
-    
+
+/**
+ * @brief Returns a number rounded up to the power of 10 choosen
+ * @param number number to be rounded up
+ * @param power house that will be rounded up (right to left)
+ * @note The rounding up "eats" the house from right to left given by power and rounds up by ten the next bigger house than the one eaten.
+ * 
+ * @note Example: number = 1457, power = 2, result = 1500
+ * @note Example: number = 368, power = 2, result = 400
+ * @note Example: number = 45678, power = 1, result = 45680
+ * @note Example: number = 345, power = 0, result = 345
+ * @note Example: number = 1457, power = 3, result = 2000
+ * @note Example: number = 1457, power = 4, result = 10000
+ * @note Example: number = 1457, power = 5, result = 100000
+*/ 
 int Barchart::round_up(int number, int power) {
+    // power of 10 we will use to round up the number
     int divisor = std::pow(10, power);
-    int result = ((number + divisor - 1) / divisor) * divisor;
+    
+    // This first calculation may give a decimal number, for example (power == 2)
+    // (1457 + 100 - 1) / 100 = 15,56
+    // rounding 15,56 down it's 15
+    int result = ((number + divisor - 1) / divisor) 
+
+    // multiplying 15 by 100 we get 1500
+    * divisor;
+
+    // Does not accept numbers lower than one
     return (result < 1) ? 1 : result;
 }    
