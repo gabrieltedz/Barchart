@@ -456,3 +456,25 @@ int Barchart::round_up(int number, int power) {
     // Does not accept numbers lower than one
     return (result < 1) ? 1 : result;
 }    
+/*
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int round_up(int number, int power) {
+    int divisor = std::pow(10, power);
+    int result = ((number + divisor - 1) / divisor) // This may give d
+    
+    * divisor;
+    return (result < 1) ? 1 : result;
+}    
+
+int main(){
+    int num1 = 1457, pow1 = 5;
+
+    std::cout << round_up(num1, pow1) << std::endl;
+
+
+
+    return 0;
+}*/
