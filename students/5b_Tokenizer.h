@@ -16,6 +16,7 @@ using std::quoted;
 using namespace std;
 
 /**
+ * @class Tokenizer.h
  * @brief The Tokenizer class for text tokenization.
  */
 class Tokenizer

@@ -6,12 +6,20 @@
 #include <cmath>
 using namespace std;
 
-/**
+
+/*!
+ * @file 3a_Barchart.cpp
+ * @brief Defines a class representing a Barchart and related functions.
+ */
+
+/*!
  * @brief Sorts a range of bars using the Merge Sort algorithm.
  * This function implements the Merge Sort algorithm to sort a range of bars
  * within the 'bars' vector in ascending order based on their values.
+ * 
  * @param start The starting index of the range to be sorted.
  * @param end The ending index of the range to be sorted.
+ * 
  * @note This function modifies the 'bars' vector in place and
  * doesn't order them in alfabetical order.
  */
@@ -58,8 +66,9 @@ void Barchart::sort_bars(size_t start, size_t end) {
 }
 
 
-/**
+/*!
  * @brief Function that calls the reading to form a barchart.
+ * 
  * @param times is the number of bars this barchart has and should expect to read.
  * @param stream file to read from.
 */
@@ -80,14 +89,14 @@ void Barchart::b_chart_read(int times, std::istream& stream){
      
 }
 
-/**
+/*!
  * @brief Resets the bars vector
 */
 void Barchart::reset(){
     bars.clear();   
 }
 
-/**
+/*!
  * @brief Check if there's a new category, if so, adds it.
  * 
  * @note Since the n_categories are not reset between barcharts, this only adds a category
@@ -111,18 +120,20 @@ void Barchart::check_categories(){
     }
 }
 
-/**
- * @brief Function to output the bars with their colours
- * @param n_bars max number of bars that can be displayed
- * @param categories Total categories the database has
+/*!
+ * @brief Function to output the bars with their colours.
+
+ * @param n_bars max number of bars that can be displayed.
+ * @param categories Total categories the database has.
+ * 
  * @note categories is from database, not from barchart, this is because categories in the database
  * contains all the categories in the file. 
 */
 void Barchart::show_bars(int n_bars, vector<string> categories){
-    /**
-     * If the number of bars the barchart has is lower than the desired amout being displayed
-     * then n_bars will be equal to bars.size(). Else, n_bars is the maximum amount of bars
-    */
+
+    // If the number of bars the barchart has is lower than the desired amout being displayed.
+    //then n_bars will be equal to bars.size(). Else, n_bars is the maximum amount of bars.
+
     if (bars.size() < n_bars){
         n_bars = bars.size();
     }   
@@ -146,8 +157,10 @@ void Barchart::show_bars(int n_bars, vector<string> categories){
 }
 
 
-/**
- * To calculate the bar lenght is quite simple, just a "rule of three".
+/*!
+ * @brief calculate the bar lenght is quite simple, just a "rule of three".
+ * 
+ * @param i Index of the current bar.
 */
 int Barchart::calculate_bar_lenght(int i){
     int length_bar{0};
@@ -161,16 +174,17 @@ int Barchart::calculate_bar_lenght(int i){
     return length_bar;
 }
 
-/**
- * @brief Function to output the x axis below the chart
- * @param n_bars amount of bars this barchart has
+/*!
+ * @brief Function to output the x axis below the chart.
+ * 
+ * @param n_bars amount of bars this barchart has.
 */
 void Barchart::x_axis(int n_bars){
     
-    /**
-     * Variables initiation
-    */
-    int length_min_bar{0}; /*Length of the smallest bar*/
+    
+    // Variables initiation.
+    
+    int length_min_bar{0};  /// Length of the smallest bar 
     int aux1{0}, aux2{0}, aux3{0}, aux4{0}, aux5{0};
     int rounded1{0};
     int temp{0}, temp2{0};
@@ -201,18 +215,15 @@ void Barchart::x_axis(int n_bars){
         }
     }
 
-    /**
-     * Cout the "+-------------------" part up until the length of the smallest bar
-    */
+    // Cout the "+-------------------" part up until the length of the smallest bar.
     std::cout << "+";
     for (int i = 0; i < length_min_bar - 1 ; i++){
         std::cout << "-";
     }     
 
         
-    /**
-     * Special cases
-    */
+    // Special cases.
+
     if (length_min_bar == 120){
         std::cout << "+" << std::endl;
     } else if (length_min_bar == 119){
@@ -228,9 +239,7 @@ void Barchart::x_axis(int n_bars){
         // Cout "+", this is exactly 1 character ahead of the smallest bar length
         cout << "+";
 
-        /**
-         * Calculate and output the divison of the (max bar - min bar) / 5
-        */
+        // Calculate and output the divison of the (max bar - min bar) / 5
         aux1 = floor((115 - length_min_bar) / 5);
         for (int i = 0; i < aux1; i++){
             std::cout << "-";
@@ -288,10 +297,18 @@ void Barchart::x_axis(int n_bars){
     str1 = std::to_string(rounded1);
 
     if ((temp2 = std::stoi(str1)) > 100){
-    str2 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) / 5, std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5)).size() - 2));
-    str3 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 2 / 5, std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5)).size() - 2));
-    str4 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 3 / 5, std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5)).size() - 2));
-    str5 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 4 / 5, std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5)).size() - 2));
+    str2 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) / 5, 
+    std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5)).size() - 2));
+
+    str3 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 2 / 5, 
+    std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5)).size() - 2));
+
+    str4 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 3 / 5, 
+    std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5)).size() - 2));
+
+    str5 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 4 / 5, 
+    std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5)).size() - 2));
+
     str6 = std::to_string(round_up(static_cast<int>(bars[0].value()) + 1, std::to_string(static_cast<int>(bars[0].value())).size() - 2));
     } else {
         str2 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) / 5, 0));
@@ -311,9 +328,12 @@ void Barchart::x_axis(int n_bars){
         
     
 
-
-/**
- * @brief To output current bar with its respective color
+/*!
+* @brief To output current bar with its respective color.
+*
+* @param category Category of the current bar.
+* @param categories Total categories in the database.
+* @param bar_length Length of the bar.
 */
 void Barchart::bar_color(std::string category, std::vector<std::string> categories, int bar_lenght){
     
@@ -372,8 +392,13 @@ void Barchart::bar_color(std::string category, std::vector<std::string> categori
     }
 }
 
-/**
- * To output current bar name (label) with its respective color
+
+/*!
+* @brief To output current bar name (label) with its respective color.
+*
+* @param category Category of the current bar.
+* @param categories Total categories in the database.
+* @param name Name (label) of the current bar.
 */
 void Barchart::name_color(std::string category, std::vector<std::string> categories, string name){
     if (categories.size() >= 15){
@@ -456,25 +481,3 @@ int Barchart::round_up(int number, int power) {
     // Does not accept numbers lower than one
     return (result < 1) ? 1 : result;
 }    
-/*
-#include <iostream>
-#include <cmath>
-using namespace std;
-
-int round_up(int number, int power) {
-    int divisor = std::pow(10, power);
-    int result = ((number + divisor - 1) / divisor) // This may give d
-    
-    * divisor;
-    return (result < 1) ? 1 : result;
-}    
-
-int main(){
-    int num1 = 1457, pow1 = 5;
-
-    std::cout << round_up(num1, pow1) << std::endl;
-
-
-
-    return 0;
-}*/

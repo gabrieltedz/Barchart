@@ -10,11 +10,12 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+
 #include "5b_Tokenizer.h"
 using namespace std;
 
 
-/**
+/*!
  * @brief This function performs the tokenization of a string. 
  * 
  * (código de gabriel, mexer apenas se necessário)
@@ -88,7 +89,7 @@ void Tokenizer::tokens(string m_input, string m_delimit, bool m_trim) {
   }
 }
 
-/**
+/*!
  * @brief Checks whether tokenization should remove whitespace from words.
  *
  * @return true if whitespace removal is enabled, false otherwise.
@@ -97,7 +98,7 @@ bool Tokenizer::trim_verify() {
   return m_trim;
 }
 
-/**
+/*!
  * @brief Changes the position to be checked in the token vector.
  *
  * @param val The desired position.
@@ -106,21 +107,21 @@ void Tokenizer::seek(size_t val) {
   value = val;
 }
 
-/**
+/*!
  * @brief Moves the token position to the next word in the token vector.
  */
 void Tokenizer::next() {
   value++;
 }
 
-/**
+/*!
  * @brief Moves the token position to the previous word in the token vector.
  */
 void Tokenizer::prev() {
   value--;
 }
 
-/**
+/*!
  * @brief Gets the size of the token list.
  *
  * @return The size of the token list.
@@ -129,7 +130,7 @@ size_t Tokenizer::size() {
   return m_tokens.size();
 }
 
-/**
+/*!
  * @brief Gets the current token.
  *
  * @return The current token.
@@ -138,7 +139,7 @@ std::string Tokenizer::get_token() {
   return m_tokens[value];
 }
 
-/**
+/*!
  * @brief Checks if the end of tokens has been reached.
  *
  * @return true if it has reached the end, false otherwise.
@@ -147,7 +148,7 @@ const bool Tokenizer::end() {
   return value >= m_tokens.size();
 }
 
-/**
+/*!
  * @brief Returns a list with tokens of words without spaces.
  *
  * @return A list with tokens of words without spaces.
@@ -157,14 +158,14 @@ std::vector<std::string> Tokenizer::get_tokens_list() {
 }
 
 
-/**
+/*!
  * @brief Adds the token to the list.
  */
 void Tokenizer::set_tokens(std::string token){
   m_tokens.push_back(token);
 }
 
-/**
+/*!
  * @brief Resets auxiliary variables.
  */
 void Tokenizer::reset(){
@@ -174,6 +175,9 @@ void Tokenizer::reset(){
   m_tokens.clear();
 }
 
+/**
+ * @brief return size token.
+*/
 int Tokenizer::size_vector(){
   return m_tokens.size();
 }

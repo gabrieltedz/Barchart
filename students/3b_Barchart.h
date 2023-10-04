@@ -1,81 +1,108 @@
 #ifndef _3B_BARCHART_H
 #define _3B_BARCHART_H
+
 #include "4b_Bar.h"
-using namespace std;
 
+/*!
+ * @file 3b_Barchart.h
+ * @brief Defines a class representing a Barchart and related functions.
+ */
 
-/**
- * @brief Class that contains an instance of animation from the Barchart
- * @note Contains a vector of bars
-*/
-class Barchart
-{
+/*!
+ * @class Barchart.h
+ 
+ * @brief Class that contains an instance of animation from the Barchart.
+ * 
+ * @note Contains a vector of bars.
+ */
+class Barchart {
 private:
-    /**
-     * @brief Vector of bars.
-    */
-    vector<Bar> bars;
+
+    vector<Bar> bars;                   /*!< Vector of bars. */
+
 public:
-    /**
-     * @brief Current timestamp of the barchart.
-    */
-    string timestamp;
 
-    /**
-     * @brief Number of categories this barchart has.
-    */
-    vector<string> n_categories;
-    /**
-     * @brief Sorts bars from biggest to smallest from top-down
-    */
-    void sort_bars(size_t start, size_t end); 
-    
-    /**
-     * @brief Function that calls the reading to form a barchart
-    */
-    void b_chart_read(int times, std::istream& stream); 
+    string timestamp;                   /*!< Current timestamp of the barchart. */
 
-    /**
-     * @brief Resets the bars vector
-    */
+    vector<string> n_categories;        /*!< Number of categories this barchart has. */
+
+    /*!
+     * @brief Sorts bars from biggest to smallest from top-down.
+     *
+     * @param start The starting index of the range to be sorted.
+     * @param end The ending index of the range to be sorted.
+     */
+    void sort_bars(size_t start, size_t end);
+
+    /*!
+     * @brief Function that calls the reading to form a barchart.
+     *
+     * @param times The number of bars this barchart has and should expect to read.
+     * @param stream File to read from.
+     */
+    void b_chart_read(int times, std::istream &stream);
+
+    /*!
+     * @brief Resets the bars vector.
+     */
     void reset();
 
-    /**
-     * @brief Adds a category if a new category is found
-    */
+    /*!
+     * @brief Adds a category if a new category is found.
+     */
     void check_categories();
 
-    /**
-     * @brief Function to output all bars of the current chart with colors
-    */
+    /*!
+     * @brief Function to output all bars of the current chart with colors.
+     *
+     * @param n_bars Max number of bars that can be displayed.
+     * @param categories Total categories the database has.
+     */
     void show_bars(int n_bars, vector<string> categories);
 
-    /**
-     * @brief Function that calculates the lenght of the current bar in relation to
+    /*!
+     * @brief Function that calculates the length of the current bar in relation to
      * the biggest bar (bars[0] is the biggest since it's sorted).
-    */
+     *
+     * @param i Index of the current bar.
+     * @return The length of the bar.
+     */
     int calculate_bar_lenght(int i);
 
-    /**
-     * @brief Function to output the x axis below the chart
-    */
+    /*!
+     * @brief Function to output the x-axis below the chart.
+     *
+     * @param n_bars Amount of bars this barchart has.
+     */
     void x_axis(int n_bars);
 
-    /**
-     * Auxiliar function to output the bar with it's respective color
-     * color based on category
-    */
+    /*!
+     * @brief Auxiliar function to output the bar with its respective color
+     * color based on category.
+     *
+     * @param category Category of the current bar.
+     * @param categories Total categories in the database.
+     * @param bar_length Length of the bar.
+     */
     void bar_color(std::string category, std::vector<std::string> categories, int bar_length);
 
-    /**
-     * Auxiliar function to output the name of current bar (label) with it's respective color
-     * color based on category
-    */
+    /*!
+     * @brief Auxiliar function to output the name of the current bar (label) with its respective color
+     * color based on category.
+     *
+     * @param category Category of the current bar.
+     * @param categories Total categories in the database.
+     * @param name Name (label) of the current bar.
+     */
     void name_color(std::string category, std::vector<std::string> categories, string name);
 
-    /**
-     * @brief Returns a number rounded up to the power of 10 choosen
-    */
+    /*!
+     * @brief Returns a number rounded up to the power of 10 chosen.
+     *
+     * @param number Number to be rounded up.
+     * @param power Power that will be rounded up (right to left).
+     * @return The rounded-up number.
+     */
     int round_up(int number, int power);
 };
 

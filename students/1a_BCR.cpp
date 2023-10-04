@@ -1,55 +1,60 @@
 #include "1b_BCR.h"
-using namespace std;
-/**
- * Basic function to read arguments from command line
-*/
-void BCR::start(int argc, char **argv){
+
+/*!
+ * @file 1b_BCR.h
+ * @brief Header file for the BCR class, which runs a program for handling and displaying bars.
+ */
+
+/*!
+ * @brief Basic function to read arguments from the command line.
+ * 
+ * This function reads command line arguments, including options for the number of bars (`-b`),
+ * the frames per second (`-f`), and the input file name. Default values are provided.
+ *
+ * @param argc Number of command line arguments.
+ * @param argv Array of command line arguments.
+ */
+void BCR::start(int argc, char **argv) {
     int intermed;
+
     if (argc == 1) {
-        //do nothing (deafult)
-        // !!!!!!!!! ACtually the default should be 2 (the file is the the second argument)
+        // do nothing (default)
+        // !!!!!!!!! Actually, the default should be 2 (the file is the second argument)
     } 
-    
     else if (argc > 1) {
-        string arg;
-        for (int i = 1; i < argc; i++){
-            
+        std::string arg;
+        for (int i = 1; i < argc; i++) {
             arg = argv[i];
 
             /**
              * It's an argument, so read it
             */
-            if (arg[0] == '-'){
-
-                if (arg[1] == 'b'){
+            if (arg[0] == '-') {
+                if (arg[1] == 'b') {
                     arg = argv[i + 1];
                     try {
-                        intermed = stoi(arg);
-                        if (intermed >= 1 && intermed <= 15){
+                        intermed = std::stoi(arg);
+                        if (intermed >= 1 && intermed <= 15) {
                             n_bars = intermed;
                         }
                     } catch (const std::invalid_argument& e) {
                         std::cerr << "Conversion failed: " << e.what() << std::endl;
                     }
                     i++;
-                }
-
+                } 
                 else if (arg[1] == 'f') {
                     arg = argv[i + 1];
                     try {
-                        intermed = stoi(arg);
+                        intermed = std::stoi(arg);
                         if (intermed >= 1 && intermed <= 24) {
                             fps = intermed;
                         }  
                     } catch (const std::invalid_argument& e) {
-                        cerr << "Conversion failed: " << e.what() << std::endl;
+                        std::cerr << "Conversion failed: " << e.what() << std::endl;
                     }
                     i++;
-               
                 }
-
             } 
-            
             else {
                 name_file = argv[i];
             }
@@ -57,50 +62,63 @@ void BCR::start(int argc, char **argv){
     }
 }
 
-void BCR::welcome(){
+/*!
+ * @brief Displays a welcome message containing information about the program.
+ */
+void BCR::welcome() {
+    std::cout << "====================================================" << std::endl;
+    std::cout << "  Welcome to the incredible Bar Chart Race! (v1.0)" << std::endl;
+    std::cout << "  Copyright (C) 2023, Authors:" << std::endl;
+    std::cout << "  Gabriel Victor da Silva" << std::endl;
+    std::cout << "  Thiago de Medeiros Raquel" << std::endl;
+    std::cout << "====================================================" << std::endl << std::endl;
 
-    cout << "====================================================" << endl;
-    cout << "  Welcome to the incredible Bar Chart Race! (v1.0)" << endl;
-    cout << "  Copyright (C) 2023, Authors:" << endl;
-    cout << "  Gabriel" << endl;
-    cout << "  Thiago de Medeiros Raquel" << endl;
-    cout << "====================================================" << endl << endl;
-
-    cout << ">>> Preparing to read input file..." << endl << endl;
-
-    cout << ">>> Processing data, please, wait." << endl;
+    std::cout << ">>> Preparing to read the input file..." << std::endl << std::endl;
+    std::cout << ">>> Processing data, please wait." << std::endl;
 }
 
-void BCR::show_info(){
-    cout << ">>> Input file successfully read." << endl << endl;
-
-    cout << ">>> We have " << database.barcharts_size() << " charts." << endl;
-    cout << ">>> Animation speed is: " << fps << "." << endl;
-    cout << ">>> Bars being displayed : " << n_bars << "." << endl;
-    cout << ">>> Title: " << database.main_title << endl;
-    cout << ">>> Value is: " << database.label << endl;
-    cout << ">>> " << database.source << endl;
-    cout << ">>> # of categories found: " << database.categories.size()  << endl;
-    for (int i = 0; i < database.categories.size(); i++){
-        if (i % 3 == 0){
+/*!
+ * @brief Displays information about the operation and some key data of the chart.
+ */
+void BCR::show_info() {
+    std::cout << ">>> Input file successfully read." << std::endl << std::endl;
+    std::cout << ">>> We have " << database.barcharts_size() << " charts." << std::endl;
+    std::cout << ">>> Animation speed is: " << fps << "." << std::endl;
+    std::cout << ">>> Bars being displayed: " << n_bars << "." << std::endl;
+    std::cout << ">>> Title: " << database.main_title << std::endl;
+    std::cout << ">>> Value is: " << database.label << std::endl;
+    std::cout << ">>> " << database.source << std::endl;
+    std::cout << ">>> # of categories found: " << database.categories.size()  << std::endl;
+    for (int i = 0; i < database.categories.size(); i++) {
+        if (i % 3 == 0) {
             std::cout << std::endl;
         }
         std::cout << "[" << database.categories[i] << "] "; 
     }
     std::cout << std::endl << std::endl;
-    cout << ">>> Press enter to begin the animation." << std::endl;
-    
+    std::cout << ">>> Press enter to begin the animation." << std::endl;
     
     std::cin.ignore();
 }
 
-void BCR::animation(int n_bars ,int fps){
+/*!
+ * @brief Initiates the animation with specified parameters.
+ * 
+ * @param n_bars Number of bars to be displayed.
+ * @param fps Chart playback rate.
+ */
+void BCR::animation(int n_bars, int fps) {
     database.animation(n_bars, fps);
 }
 
-/**
- * Function to call data read
-*/
-void BCR::bcr_read_file(int n_bars, int fps){
+/*!
+ * @brief Function to call data read.
+ * 
+ * Initiates the process of reading data from the input file using the Database class.
+ * 
+ * @param n_bars Number of bars to be displayed.
+ * @param fps Chart playback rate.
+ */
+void BCR::bcr_read_file(int n_bars, int fps) {
     database.data_read(n_bars, fps, name_file);
 }
