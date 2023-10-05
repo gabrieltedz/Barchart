@@ -60,7 +60,8 @@ void BCR::start(int argc, char **argv) {
                 }
                 else{
                     std::string line;
-                    std::cerr << "Unknow option: " << argv[i] << "\n\n";
+                    std::cerr << "Unknow option: " << argv[i] << "\n";
+                    std::cerr << "Default options will be assumed. \n\n";
                     std::cout << ">>> Press enter to continue.\n";
                     std::getline(std::cin, line);
                 }
