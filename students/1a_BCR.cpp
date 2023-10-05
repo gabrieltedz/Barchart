@@ -54,6 +54,16 @@ void BCR::start(int argc, char **argv) {
                     }
                     i++;
                 }
+                else if(arg[1] == 'h'){
+                    usage();
+                    return exit(1);
+                }
+                else{
+                    std::string line;
+                    std::cerr << "Unknow option: " << argv[i] << "\n\n";
+                    std::cout << ">>> Press enter to continue.\n";
+                    std::getline(std::cin, line);
+                }
             } 
             else {
                 name_file = argv[i];
@@ -121,4 +131,17 @@ void BCR::animation(int n_bars, int fps) {
  */
 void BCR::bcr_read_file(int n_bars, int fps) {
     database.data_read(n_bars, fps, name_file);
+}
+
+/*!
+ * @brief Print the instructions for use.
+*/
+void BCR::usage(){
+    std::cerr << "Usage: bcr [<options>] <input_data_file>\n";
+    std::cerr << "Bar Chart Race options:\n";
+    std::cerr << "      -b  <num> Max # of bars in a single char.\n";
+    std::cerr << "                Valid range is [1,15]. Default values is 5.\n";
+    std::cerr << "      -f  <num> Animation speed in fps (frames per second).\n";
+    std::cerr << "                Valid range is [1,24]. Default value is 24.\n";
+
 }

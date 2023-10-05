@@ -39,6 +39,11 @@ public:
      * @brief Displays information about the operation and some key data of the chart.
     */
     void show_info();
+
+    /*!
+    * @brief Print the instructions for use.
+    */
+    void usage();
     
     /*!
      * @brief Reads the file and stores all data in the database.
