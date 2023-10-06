@@ -18,8 +18,9 @@ void BCR::start(int argc, char **argv) {
     int intermed;
 
     if (argc == 1) {
-        // do nothing (default)
-        // !!!!!!!!! Actually, the default should be 2 (the file is the second argument)
+        // Show usage, exit.
+        usage();
+        return exit(1);
     } 
     else if (argc > 1) {
         std::string arg;

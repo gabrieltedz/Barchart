@@ -90,7 +90,7 @@ void Database::animation(int n_bars, int fps)
     for (int i = 0; i < barcharts.size(); i++)
     {
         /// Jump out lines to give the impression of animation:
-        for (int j = 0; j < 40 - (n_bars * 2); j++)
+        for (int j = 0; j < 50 - (n_bars * 2); j++)
         {
             std::cout << std::endl;
         }
@@ -134,8 +134,7 @@ void Database::legend()
     {
         if (categories.size() >= 15)
         {
-            std::cout << Color::tcolor("█", Color::getColorByIndex(15), Color::REGULAR);
-            std::cout << ": " << Color::tcolor(categories[i], Color::getColorByIndex(15), Color::REGULAR) << " ";
+            // Dont do nothing, if above 15 categories, all will be white, and the legend wont help the user experience it better
         }
         else
         {

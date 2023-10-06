@@ -296,27 +296,38 @@ void Barchart::x_axis(int n_bars){
     }
     str1 = std::to_string(rounded1);
 
+    /**
+     * These calculate the numbers below the barchart rounding them up
+     * If the number is above 100, round up to the second biggest house
+    */
     if ((temp2 = std::stoi(str1)) > 100){
-    str2 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) / 5, 
-    std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5)).size() - 2));
+        str2 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) / 5, 
+        std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) / 5)).size() - 2));
 
-    str3 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 2 / 5, 
-    std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5)).size() - 2));
+        str3 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 2 / 5, 
+        std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 2 / 5)).size() - 2));
 
-    str4 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 3 / 5, 
-    std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5)).size() - 2));
+        str4 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 3 / 5, 
+        std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 3 / 5)).size() - 2));
 
-    str5 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 4 / 5, 
-    std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5)).size() - 2));
+        str5 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 4 / 5, 
+        std::to_string(static_cast<int>(bars[n_bars].value() + (bars[0].value() - bars[n_bars].value()) * 4 / 5)).size() - 2));
 
-    str6 = std::to_string(round_up(static_cast<int>(bars[0].value()) + 1, std::to_string(static_cast<int>(bars[0].value())).size() - 2));
-    } else {
+        str6 = std::to_string(round_up(static_cast<int>(bars[0].value()) + 1, std::to_string(static_cast<int>(bars[0].value())).size() - 2));
+    } 
+    
+    // Else, if the number is equal or below 100, dont round up the number
+    else {
         str2 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) / 5, 0));
         str3 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 2 / 5, 0));
         str4 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 3 / 5, 0));
         str5 = std::to_string(round_up(temp + (bars[0].value() - bars[n_bars].value()) * 4 / 5, 0));
         str6 = std::to_string(round_up(static_cast<int>(bars[0].value()) + 1, 0));
     }
+
+    /**
+     * Output of the numbers below the barchart at the exact position the "+" are in the line below.
+    */
     std::cout << "0" << std::setw(length_min_bar + str1.size() - 1) << str1;                        
     std::cout << std::setw(aux1 - str1.size() + str2.size() + 1) << str2;
     std::cout << std::setw((aux2 - str2.size() + str3.size() + 1)) << str3;
