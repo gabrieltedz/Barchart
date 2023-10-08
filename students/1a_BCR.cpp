@@ -62,9 +62,12 @@ void BCR::start(int argc, char **argv) {
                 else{
                     std::string line;
                     std::cerr << "Unknow option: " << argv[i] << "\n";
+                    usage();
                     std::cerr << "Default options will be assumed. \n\n";
                     std::cout << ">>> Press enter to continue.\n";
                     std::getline(std::cin, line);
+                    n_bars = 5;
+                    fps = 12;
                 }
             } 
             else {
@@ -144,6 +147,6 @@ void BCR::usage(){
     std::cerr << "      -b  <num> Max # of bars in a single char.\n";
     std::cerr << "                Valid range is [1,15]. Default values is 5.\n";
     std::cerr << "      -f  <num> Animation speed in fps (frames per second).\n";
-    std::cerr << "                Valid range is [1,24]. Default value is 24.\n";
+    std::cerr << "                Valid range is [1,24]. Default value is 12.\n";
 
 }
