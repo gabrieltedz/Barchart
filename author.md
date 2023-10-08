@@ -47,7 +47,7 @@ To compile the project, follow the steps below:
 
 2. Open a terminal and navigate to the project's root directory.
 
-3. Use the command cmake -S . -B build to create the build folder that will contain the Makefiles and where the executable will be generated.
+3. Use the command 'cmake -S . -B build' to create the build folder that will contain the Makefiles and where the executable will be generated.
 
-4. Execute the command cmake --build build to compile the project, which will create the executable with in the build directory named bcr.
+4. Execute the command 'cmake --build build' to compile the project, which will create the executable with in the build directory named bcr.
 
