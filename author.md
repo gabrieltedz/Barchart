@@ -18,13 +18,11 @@ Email: thiaguinho2005@yahoo.com.br
 # Problems found or limitations
 
 <!-- TODO -->
-Lista aqui os problemas encontrados (se houve algum) e as
-possíveis limitações do programa.
+Temporal constraints proved to be lacking. The limited timeframe exerted significant pressure, which, compelled us to make less-than-ideal decisions
 
 # Grading
 
 <!-- TODO -->
-Preencha os itens que você implementou, indicando qual a nota esperada para cada item.
 
 
 Item     | Valor máximo   | Valor esperado
@@ -43,4 +41,13 @@ Program handles errors properly | 10 | 10
 # Compiling and Runnig
 
 <!-- TODO -->
-Indique aqui como compilar e executar seu programa.
+To compile the project, follow the steps below:
+
+    Make sure you have CMake installed on your system.
+
+    Open a terminal and navigate to the project's root directory.
+
+    Use the command cmake -S . -B build to create the build folder that will contain the Makefiles and where the executable will be generated.
+
+    Execute the command cmake --build build to compile the project, which will create the executable with in the build directory named bcr.
+
