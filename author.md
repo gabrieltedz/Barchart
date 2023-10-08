@@ -1,12 +1,19 @@
 # Introduction
 
 <!-- TODO -->
-Breve descrição do projeto.
+The "Bar Chart Race" is an data visualization project that reads data from a file and animates it in the style of a race, with each element being represented by a bar.
+The features of the created program include choosing the amount of bars being displayed and the speed of animation. 
 
 # Author(s)
 
 <!-- TODO -->
-Indique o nome do autor e email.
+Autor: Gabriel Victor da Silva
+
+Email: gabrieltedz.com@gmail.com
+
+Autor: Thiago de Medeiros Raquel
+
+Email: thiaguinho2005@yahoo.com.br
 
 # Problems found or limitations
 
